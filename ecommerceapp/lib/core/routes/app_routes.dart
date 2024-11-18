@@ -49,24 +49,15 @@ class AppRoute {
       case onBoardingScreen:
         return SizeTransition3(const OnBoardingScreen());
       case signUpScreen:
-        return SizeTransition3(BlocProvider(
-          create: (context) => AuthSignUpCubit(),
-          child: const SignUpScreen(),
-        ));
+        return SizeTransition3(const SignUpScreen());
       case signInScreen:
-        return SizeTransition3(BlocProvider(
-          create: (context) => AuthSignUpCubit(),
-          child: const SignInScreen(),
-        ));
+        return SizeTransition3(const SignInScreen());
 
       case profileScreen:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case darkAndLightView:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (context) => ThemCubit()..ChangeThem(ThemeState.Initial),
-                  child: DarkAndLightView(),
-                ));
+            builder: (_) => DarkAndLightView());
       case forgetPassWordScreen:
         return SizeTransition3(const ForgotPasswordScreen());
       case loginSuccess:
@@ -89,15 +80,7 @@ class AppRoute {
       //todo__________
       case layoutScreen:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (context) => LayoutCubit()
-                    ..getProducts()
-                    ..getCategoriesData()
-                    ..getBannersData()
-                    ..getfavorite()
-                    ..getCarts(),
-                  child: const HomeNavBarWidget3(),
-                ));
+            builder: (_) => const HomeNavBarWidget3());
 
       case detailsScreen:
         final ppprouduct = settings.arguments as ProductModel;
