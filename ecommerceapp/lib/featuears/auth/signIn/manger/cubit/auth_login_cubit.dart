@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:bloc/bloc.dart';
-import 'package:ecommerceapp/core/helper/Shared/cash_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../../../../../core/helper/Shared/Local_NetWork.dart';
@@ -30,7 +29,7 @@ class AuthSignInCubit extends Cubit<AuthLoginState> {
           String token = data['data']['token'];
           await CashNetwork.insertTocash(key: 'token', value: token);
           await CashNetwork.insertTocash(key: 'password', value: signInPassword.text);
-          currenpassword = await CashNetwork.getCashData(key: 'password');
+          currenpassword = CashNetwork.getCashData(key: 'password');
 
           debugPrint('Token: $token');
           emit(AuthLoginSuccessState());

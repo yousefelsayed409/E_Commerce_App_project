@@ -1,6 +1,4 @@
-import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
-import 'package:ecommerceapp/core/helper/Shared/s.dart';
-import 'package:ecommerceapp/core/widgets/api_constants.dart';
+
 import 'package:ecommerceapp/featuears/auth/signIn/sign_in_screen.dart';
 import 'package:ecommerceapp/featuears/on_boarding/onBoarding_contennt.dart';
 import 'package:flutter/material.dart';
@@ -84,8 +82,7 @@ class _BodyState extends State<Body> {
                     DefaultButton(
                       text: "Continue",
                       press: () async{
- await MySharedPrefrence.setData(
-          key: AppConst.onBoardingScreen, value: AppConst.onBoardingScreen);                        Navigator.push(context,
+                       Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                           return SignInScreen();
                         }));
