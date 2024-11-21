@@ -1,8 +1,11 @@
+import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/helper/Shared/cash_helper.dart';
 import 'package:ecommerceapp/core/utils/app_styles.dart';
+import 'package:ecommerceapp/core/widgets/api_constants.dart';
+import 'package:ecommerceapp/core/widgets/custom_nav.dart';
+import 'package:ecommerceapp/featuears/on_boarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 import '../../core/routes/app_routes.dart';
 import '../../core/utils/app_assets.dart';
@@ -17,17 +20,19 @@ class Splashscreen extends StatefulWidget {
 class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
-    navigateToOnBoardingViewOrHomeView();
     super.initState();
+    navigateToOnBoardingViewOrHomeView();
   }
 
   void navigateToOnBoardingViewOrHomeView() {
     Future.delayed(const Duration(seconds: 2)).then((value) {
-      Navigator.pushReplacementNamed(context, AppRoute.onBoardingScreen);
-      // if (CacheHelper.getBoolean(key: 'OnBoardingView') ?? false) {
-      // return Navigator.pushReplacementNamed(context, AppRoute..homeView);
+      CustomNavigation.navigateTo(context, const OnBoardingScreen());
+      // // التحقق من إذا ما كان المستخدم قد شاهد شاشة الـ Onboarding أم لا
+      // bool? hasSeenOnboarding = CashNetwork.getCashData(key: AppConst.onBoardingScreen) as bool?;
+      // if (hasSeenOnboarding ?? false) {
+      //   Navigator.pushReplacementNamed(context, AppRoute.layoutScreen);
       // } else {
-      //   return Navigator.pushReplacementNamed(context, AppRoute.onBoardingView);
+      //   Navigator.pushReplacementNamed(context, AppRoute.onBoardingScreen);
       // }
     });
   }
@@ -41,11 +46,9 @@ class _SplashscreenState extends State<Splashscreen> {
         body: Container(
           width: double.infinity.w,
           height: double.infinity.h,
-          decoration:  const BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(
-                AppAssets.splashImage,
-              ),
+              image: AssetImage(AppAssets.splashImage),
               fit: BoxFit.fill,
             ),
           ),
@@ -61,14 +64,3 @@ class _SplashscreenState extends State<Splashscreen> {
     );
   }
 }
-
-
-  // child: SizedBox(
-            //   width: double.maxFinite,
-            //   child: CustomImageView(
-            //     imagePath: ImageConstant.imgLogo,
-            //     height: 58.v,
-            //     width: 121.h,
-            //     alignment: Alignment.center,
-            //   ),
-            // ),

@@ -28,7 +28,7 @@ class _CompletPayScreenState extends State<CompletPayScreen> {
       listener: (context, state) {
         if (state is PaymentOrderIdSuccessStates) {
           // Navigate to the next screen when order ID is obtained successfully
-          navigateTo(context, ToggleScreen());
+          CustomNavigation.navigateTo(context, ToggleScreen());
         } else if (state is PaymentAuthErrorStates ||
                    state is PaymentOrderIdErrorStates) {
           // Show error message

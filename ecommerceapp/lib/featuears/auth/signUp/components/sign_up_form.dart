@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/featuears/auth/signIn/components/pic_image_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,10 +22,11 @@ class _SignUpFormState extends State<SignUpForm> {
   String? password;
   String? conform_password;
   bool remember = false;
-  final namecontrolar = TextEditingController();
-  final emailcontrolar = TextEditingController();
-  final phonecontrolar = TextEditingController();
-  final passwordcontrolar = TextEditingController();
+  // final namecontrolar = TextEditingController();
+  // final emailcontrolar = TextEditingController();
+  // final phonecontrolar = TextEditingController();
+  // final passwordcontrolar = TextEditingController();
+  
   final List<String?> errors = [];
 
   void addError({String? error}) {
@@ -45,17 +47,20 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<AuthSignUpCubit>();
     return Form(
       key: _formKey,
       child: Column(
-        children: [
-          buildNameFormField(controller: namecontrolar),
+        children: [ 
+          const PickImageWidget(),
           SizedBox(height: 15.h),
-          buildEmailFormField(controller: emailcontrolar),
+          buildNameFormField(controller: cubit.signUpName),
           SizedBox(height: 15.h),
-          buildPhoneFormField(controller: phonecontrolar),
+          buildEmailFormField(controller: cubit.signUpEmail),
           SizedBox(height: 15.h),
-          buildPasswordFormField(controller: passwordcontrolar),
+          buildPhoneFormField(controller: cubit.signUpPhoneNumber),
+          SizedBox(height: 15.h),
+          buildPasswordFormField(controller: cubit.signUpPassword),
           SizedBox(height: 15.h),
           FormError(errors: errors),
           SizedBox(height: 10.h),
@@ -83,11 +88,7 @@ class _SignUpFormState extends State<SignUpForm> {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 // if all are valid then go to success screen
-                BlocProvider.of<AuthSignUpCubit>(context).Register(
-                    name: namecontrolar.text,
-                    email: emailcontrolar.text,
-                    password: passwordcontrolar.text,
-                    phone: phonecontrolar.text);
+                BlocProvider.of<AuthSignUpCubit>(context).register();
                 // Navigator.pushNamed(context, AppRoute.signInScreen);
               }
             },
@@ -134,7 +135,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildPasswordFormField(
       {required TextEditingController controller}) {
     return TextFormField(
-      controller: passwordcontrolar,
+      controller: controller,
       obscureText: true,
       // onSaved: (newValue) => password = newValue,
       // onChanged: (value) {
@@ -170,7 +171,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildPhoneFormField(
       {required TextEditingController controller}) {
     return TextFormField(
-      controller: phonecontrolar,
+      controller: controller,
       obscureText: false,
       // onSaved: (newValue) => password = newValue,
       // onChanged: (value) {
@@ -206,7 +207,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildNameFormField(
       {required TextEditingController controller}) {
     return TextFormField(
-      controller: namecontrolar,
+      controller: controller,
       obscureText: false,
       // onSaved: (newValue) => password = newValue,
       // onChanged: (value) {
@@ -242,7 +243,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildEmailFormField(
       {required TextEditingController controller}) {
     return TextFormField(
-      controller: emailcontrolar,
+      controller: controller,
       keyboardType: TextInputType.emailAddress,
       // onSaved: (newValue) => email = newValue,
       // onChanged: (value) {

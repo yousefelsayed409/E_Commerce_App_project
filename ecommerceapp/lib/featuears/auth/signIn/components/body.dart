@@ -1,5 +1,6 @@
 import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
 import 'package:ecommerceapp/core/widgets/api_constants.dart';
+import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,6 +23,7 @@ class Body extends StatelessWidget {
         // TODO: implement listener
         if (state is AuthLoginSuccessState) {
           CashNetwork.insertTocash(key: AppConst.token, value: state.userModel!.token!);
+          context.read<LayoutCubit>().getUserData();
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(

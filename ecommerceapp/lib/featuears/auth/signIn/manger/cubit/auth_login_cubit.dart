@@ -19,7 +19,7 @@ class AuthSignInCubit extends Cubit<AuthLoginState> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         if (data['status'] == true) {
-          // debugPrint(' user login Success $data');
+          debugPrint(' user login Success $data');
           await CashNetwork.insertTocash(
               key: 'token', value: data['data']['token']);
           await CashNetwork.insertTocash(key: 'password', value: password);

@@ -17,13 +17,5 @@ class RegisterFaliureState extends AuthState {
   });
 }
 
-class loginLoadingState extends AuthState {}
+class UpLoadImageState extends AuthState {}
 
-class loginsuccessState extends AuthState {}
-
-class loginFailureState extends AuthState {
-  String errorMessage;
-  loginFailureState({
-    required this.errorMessage,
-  });
-}

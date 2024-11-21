@@ -4,7 +4,6 @@ import '../../../core/utils/app_styles.dart';
 import 'components/body.dart';
 
 class SignInScreen extends StatelessWidget {
-  static const String id = "SignInScreen";
 
   const SignInScreen({super.key});
   @override

@@ -47,23 +47,15 @@ class App extends StatelessWidget {
           minTextAdapt: true,
           splitScreenMode: true,
           builder: (context, child) {
-            return BlocBuilder<ThemCubit, ThemState>(
-              builder: (context, state) {
-                ThemeData themeData = (state is AppLightThem)
-                    ? ThemeData.light()
-                    : ThemeData.dark();
-
-                return MaterialApp(
-                  theme: themeData,
+            return MaterialApp(
+                
                   debugShowCheckedModeBanner: false,  
                   initialRoute: 
                   Token != null
-                      ? AppRoute.layoutScreen
+                      ? AppRoute.signInScreen
                       : AppRoute.splashScreen,
                   onGenerateRoute: AppRoute.generateRoute,
                 );
-              },
-            );
           },
         ),
     );

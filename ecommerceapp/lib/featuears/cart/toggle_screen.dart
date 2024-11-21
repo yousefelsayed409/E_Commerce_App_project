@@ -23,7 +23,7 @@ class ToggleScreen extends StatelessWidget {
             if (state is PaymentRefCodeSuccessStates) {
                showsnakbarwidget(context, "Success get ref code ", true);
              
-              navigateAndFinish(context, const ReferenceScreen());
+              CustomNavigation.navigateAndFinish(context, const ReferenceScreen());
             }
             if (state is PaymentRefCodeErrorStates) {
                  showsnakbarwidget(context, "Error get ref code ", false);
@@ -75,7 +75,7 @@ class ToggleScreen extends StatelessWidget {
                     Expanded(
                       child: InkWell(
                         onTap: () {
-                          navigateAndFinish(context, const VisaScreen());
+                          CustomNavigation.navigateAndFinish(context, const VisaScreen());
                         },
                         child: Container(
                           width: double.infinity,
