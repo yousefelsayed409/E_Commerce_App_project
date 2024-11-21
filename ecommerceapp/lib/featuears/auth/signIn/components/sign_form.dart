@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/widgets/Form_Error.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/defult_button.dart';
-import '../../../../core/routes/app_routes.dart';
 import '../../../../core/widgets/keyboar_Util.dart';
 import '../../forgot_password/forgot_password_screen.dart';
 import '../manger/cubit/auth_login_cubit.dart';
@@ -20,8 +19,8 @@ class SignForm extends StatefulWidget {
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
   bool? remember = false;
-  final emailcontrollar = TextEditingController();
-  final passwordcontrollar = TextEditingController();
+  // final emailcontrollar = TextEditingController();
+  // final passwordcontrollar = TextEditingController();
 
   final List<String?> errors = [];
 
@@ -43,13 +42,14 @@ class _SignFormState extends State<SignForm> {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<AuthSignInCubit>();
     return Form(
       key: _formKey,
       child: Column(
         children: [
-          buildEmailFormField(controller: emailcontrollar),
+          buildEmailFormField(controller: cubit.signInEmail),
           SizedBox(height: 30.h),
-          buildPasswordFormField(controller: passwordcontrollar),
+          buildPasswordFormField(controller: cubit.signInPassword),
           SizedBox(height: 30.h),
           Row(
             children: [
@@ -84,9 +84,7 @@ class _SignFormState extends State<SignForm> {
               if (_formKey.currentState!.validate() == true) {
                 // _formKey.currentState!.save();
                 KeyboardUtil.hideKeyboard(context);
-                BlocProvider.of<AuthSignInCubit>(context).Login(
-                    email: emailcontrollar.text,
-                    password: passwordcontrollar.text);
+                BlocProvider.of<AuthSignInCubit>(context).Login();
                 // if all are valid then go to success screen
 
                 // Navigator.pushNamed(context, AppRoute.homescreen);

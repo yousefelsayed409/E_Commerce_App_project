@@ -22,7 +22,6 @@ class Body extends StatelessWidget {
       listener: (context, state) {
         // TODO: implement listener
         if (state is AuthLoginSuccessState) {
-          CashNetwork.insertTocash(key: AppConst.token, value: state.userModel!.token!);
           context.read<LayoutCubit>().getUserData();
           Navigator.pushReplacement(
               context,

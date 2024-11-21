@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:bloc/bloc.dart';
+import 'package:ecommerceapp/core/helper/Shared/cash_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../../../../../core/helper/Shared/Local_NetWork.dart';
@@ -10,21 +11,30 @@ part 'auth_login_state.dart';
 class AuthSignInCubit extends Cubit<AuthLoginState> {
   AuthSignInCubit() : super(AuthLoginInitial());
 
-  void Login({required String email, required String password}) async {
+  //Sign in email
+  TextEditingController signInEmail = TextEditingController();
+  //Sign in password
+  TextEditingController signInPassword = TextEditingController();
+ 
+  void Login() async {
     emit(AuthLoginLoadingState());
     try {
       http.Response response = await http.post(
           Uri.parse('https://student.valuxapps.com/api/login'),
-          body: {'email': email, "password": password});
+          body: {'email': signInEmail.text, "password": signInPassword.text});
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         if (data['status'] == true) {
-          debugPrint(' user login Success $data');
-          await CashNetwork.insertTocash(
-              key: 'token', value: data['data']['token']);
-          await CashNetwork.insertTocash(key: 'password', value: password);
+          debugPrint('User login Success: $data');
+
+          String token = data['data']['token'];
+          await CashNetwork.insertTocash(key: 'token', value: token);
+          await CashNetwork.insertTocash(key: 'password', value: signInPassword.text);
           currenpassword = await CashNetwork.getCashData(key: 'password');
+
+          debugPrint('Token: $token');
           emit(AuthLoginSuccessState());
+          
         } else {
           debugPrint(' Failed To Login ${data['message']}');
           emit(AuthLoginFailureState(errorMessage: data['message']));

@@ -52,7 +52,7 @@ class App extends StatelessWidget {
                   debugShowCheckedModeBanner: false,  
                   initialRoute: 
                   Token != null
-                      ? AppRoute.signInScreen
+                      ? AppRoute.layoutScreen
                       : AppRoute.splashScreen,
                   onGenerateRoute: AppRoute.generateRoute,
                 );
