@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/featuears/profile/components/show_dialog_widget.dart';
 import 'package:ecommerceapp/featuears/profile/setting_view.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +51,18 @@ class Bodyprofile extends StatelessWidget {
             text: "Log Out",
             asetsimage: Icons.exit_to_app,
             press: () {
-              // Navigator.pushReplacementNamed(context, AppRoute.signInScreen);
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      backgroundColor:
+                          Theme.of(context).scaffoldBackgroundColor,
+                      content: const ShowDialogWidget(),
+                    );
+                  },
+                );
             },
           ),
         ],

@@ -68,3 +68,14 @@ class UpdateUserDataWithFailureState extends LayoutStates {
 
   UpdateUserDataWithFailureState(this.error);
 }
+
+class LogOutLoadingState extends LayoutStates {}
+
+class LogOutSuccessState extends LayoutStates {}
+
+class LogOutFailureState extends LayoutStates {
+  final String errorMessage;
+  LogOutFailureState({
+    required this.errorMessage,
+  });
+}

@@ -261,5 +261,23 @@ class LayoutCubit extends Cubit<LayoutStates> {
     } catch (e) {
       emit(UpdateUserDataWithFailureState(e.toString()));
     }
+  } 
+
+
+
+
+  Future<void> logOut() async {
+    try {
+      emit(LogOutLoadingState());
+      var response = await http.post(Uri.parse("https://student.valuxapps.com/api/logout"),
+      headers: {'lang': 'ar', 'Authorization': CashNetwork.getCashData(key: 'token')},
+          body: {'fcm_token': CashNetwork.getCashData(key: 'token') , });
+       
+      
+      emit(LogOutSuccessState());
+    }  catch (e) {
+      emit(LogOutFailureState(errorMessage: e.toString()));
+      // TODO
+    }
   }
 }
