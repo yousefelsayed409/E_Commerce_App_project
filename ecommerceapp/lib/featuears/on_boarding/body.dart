@@ -1,4 +1,6 @@
 
+import 'package:ecommerceapp/core/helper/Shared/cash_helper.dart';
+import 'package:ecommerceapp/core/widgets/api_constants.dart';
 import 'package:ecommerceapp/featuears/auth/signIn/sign_in_screen.dart';
 import 'package:ecommerceapp/featuears/on_boarding/onBoarding_contennt.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +83,8 @@ class _BodyState extends State<Body> {
                     const Spacer(flex: 3),
                     DefaultButton(
                       text: "Continue",
-                      press: () async{
+                      press: () async{ 
+                      CacheHelper().saveData(key: AppConst.onBoardingScreen, value: AppConst.onBoardingScreen);
                        Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                           return SignInScreen();

@@ -1,15 +1,10 @@
-import 'package:ecommerceapp/core/theme/cubit/them_cubit.dart';
-import 'package:ecommerceapp/core/theme/enums/themstate.dart';
 import 'package:ecommerceapp/featuears/Layout/widget/home_nav_bar.dart';
-import 'package:ecommerceapp/featuears/auth/signUp/manger/manger/auth_cubit.dart';
 import 'package:ecommerceapp/featuears/profile/change_password_screen.dart';
 import 'package:ecommerceapp/featuears/profile/setting_view.dart';
 import 'package:ecommerceapp/featuears/profile/update_data_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../featuears/Details/Detail_screen.dart';
 import '../../featuears/Favorite/favorite_screen.dart';
-import '../../featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
 import '../../featuears/auth/otp/otp_screen.dart';
 import '../../featuears/cart/Cart_screen.dart';
 import '../../featuears/home/screen/Home_screen.dart';

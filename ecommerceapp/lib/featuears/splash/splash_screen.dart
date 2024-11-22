@@ -1,14 +1,15 @@
-import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
-import 'package:ecommerceapp/core/helper/Shared/cash_helper.dart';
-import 'package:ecommerceapp/core/utils/app_styles.dart';
+import 'package:ecommerceapp/core/utils/constants.dart';
 import 'package:ecommerceapp/core/widgets/api_constants.dart';
-import 'package:ecommerceapp/core/widgets/custom_nav.dart';
+import 'package:ecommerceapp/featuears/Layout/widget/home_nav_bar.dart';
+import 'package:ecommerceapp/featuears/auth/signIn/sign_in_screen.dart';
 import 'package:ecommerceapp/featuears/on_boarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/routes/app_routes.dart';
+import '../../core/helper/Shared/Local_NetWork.dart';
 import '../../core/utils/app_assets.dart';
+import '../../core/utils/app_styles.dart';
+import '../../core/widgets/custom_nav.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -21,20 +22,25 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     super.initState();
-    navigateToOnBoardingViewOrHomeView();
+    _navigateToNextScreen();
   }
 
-  void navigateToOnBoardingViewOrHomeView() {
-    Future.delayed(const Duration(seconds: 2)).then((value) {
+  void _navigateToNextScreen() async {
+    // انتظار لمدة 2 ثانية
+    await Future.delayed(const Duration(seconds: 2));
+
+    final String? token = CashNetwork.getCashData(key: 'token');
+    currenpassword = CashNetwork.getCashData(key: 'password');
+
+bool hasSeenOnboarding = (CashNetwork.getCashData(key: AppConst.onBoardingScreen) == AppConst.onBoardingScreen);
+
+    if (token != null && token.isNotEmpty) {
+      CustomNavigation.navigateTo(context, const HomeNavBarWidget3() );
+    } else if (hasSeenOnboarding == true) {
+      CustomNavigation.navigateTo(context, const SignInScreen());
+    } else {
       CustomNavigation.navigateTo(context, const OnBoardingScreen());
-      // // التحقق من إذا ما كان المستخدم قد شاهد شاشة الـ Onboarding أم لا
-      // bool? hasSeenOnboarding = CashNetwork.getCashData(key: AppConst.onBoardingScreen) as bool?;
-      // if (hasSeenOnboarding ?? false) {
-      //   Navigator.pushReplacementNamed(context, AppRoute.layoutScreen);
-      // } else {
-      //   Navigator.pushReplacementNamed(context, AppRoute.onBoardingScreen);
-      // }
-    });
+    }
   }
 
   @override

@@ -7,14 +7,10 @@ import 'package:ecommerceapp/featuears/cart/manger/cubit/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../utils/constants.dart';
 import '../routes/app_routes.dart';
 
 class App extends StatelessWidget {
-  const App({
-    super.key,
-  });
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +25,9 @@ class App extends StatelessWidget {
         BlocProvider(
           create: (context) => PaymentCubit()..getAuthToken(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => ThemCubit()..ChangeThem(ThemeState.Initial),
         ),
-        
         BlocProvider(
           create: (context) => LayoutCubit()
             ..getCarts()
@@ -42,22 +37,18 @@ class App extends StatelessWidget {
             ..getProducts(),
         ),
       ],
-        child: ScreenUtilInit(
-          designSize: const Size(360, 690),
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (context, child) {
-            return MaterialApp(
-                
-                  debugShowCheckedModeBanner: false,  
-                  initialRoute: 
-                  Token != null
-                      ? AppRoute.layoutScreen
-                      : AppRoute.splashScreen,
-                  onGenerateRoute: AppRoute.generateRoute,
-                );
-          },
-        ),
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return const MaterialApp(
+            debugShowCheckedModeBanner: false,
+            initialRoute: AppRoute.splashScreen,
+            onGenerateRoute: AppRoute.generateRoute,
+          );
+        },
+      ),
     );
   }
 }
