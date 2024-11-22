@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-
 import '../../../../core/utils/app_styles.dart';
-import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/defult_button.dart';
 import '../../signIn/sign_in_screen.dart';
 
 class OtpForm extends StatefulWidget {
   const OtpForm({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _OtpFormState createState() => _OtpFormState();

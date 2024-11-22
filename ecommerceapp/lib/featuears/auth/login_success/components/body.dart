@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/defult_button.dart';
-import '../../../../core/routes/app_routes.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -29,7 +28,7 @@ class Body extends StatelessWidget {
               text: "Back to home",
               press: () {
                 //////////////////////!
-                CustomNavigation.navigateAndFinish(context, HomeNavBarWidget3());
+                CustomNavigation.navigateAndFinish(context, const HomeNavBarWidget3());
               },
             ),
           ),

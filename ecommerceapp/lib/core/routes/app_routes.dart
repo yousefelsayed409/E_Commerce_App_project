@@ -40,7 +40,7 @@ class AppRoute {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case splashScreen:
-        return SizeTransition3( Splashscreen());
+        return SizeTransition3( const Splashscreen());
       case onBoardingScreen:
         return SizeTransition5(const OnBoardingScreen());
       case signUpScreen:
@@ -116,8 +116,8 @@ class SizeTransition3 extends PageRouteBuilder {
               child: SizeTransition(
                 axis: Axis.horizontal,
                 sizeFactor: animation,
-                child: page,
                 axisAlignment: 0,
+                child: page,
               ),
             );
           },

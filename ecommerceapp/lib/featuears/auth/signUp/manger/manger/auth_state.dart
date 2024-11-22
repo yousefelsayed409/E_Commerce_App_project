@@ -11,7 +11,7 @@ class RegisterLoadingState extends AuthState {}
 class RegisterSuccessState extends AuthState {}
 
 class RegisterFaliureState extends AuthState {
-  String errorMessage;
+ final String errorMessage;
   RegisterFaliureState({
     required this.errorMessage,
   });

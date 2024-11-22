@@ -1,18 +1,16 @@
 import 'package:ecommerceapp/core/routes/app_routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../featuears/auth/signUp/sign_up_screen.dart';
 import '../utils/app_styles.dart';
 
 class DontHaveAccountText extends StatelessWidget {
-  final String To;
+  final String to;
   final String title;
   const DontHaveAccountText({
-    Key? key,
+    super.key,
     this.title = 'Don’t have an account ?',
-    required this.To,
-  }) : super(key: key);
+    required this.to,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class DontHaveAccountText extends StatelessWidget {
           onTap: () => Navigator.pushNamedAndRemoveUntil(
               context, AppRoute.signUpScreen, (route) => false),
           child: Text(
-            To,
+            to,
              style: AppStyles.textStyle20,
           ),
         ),
@@ -40,13 +38,13 @@ class DontHaveAccountText extends StatelessWidget {
 
 
 class HaveAccountText extends StatelessWidget {
-  final String To;
+  final String to;
   final String title;
   const HaveAccountText({
-    Key? key,
+    super.key,
     this.title = ' Have an acount  ?  ',
-    required this.To,
-  }) : super(key: key);
+    required this.to,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +58,7 @@ style: AppStyles.textStyle16,        ),
           onTap: () => Navigator.pushNamedAndRemoveUntil(
               context, AppRoute.signInScreen, (route) => false),
           child: Text(
-            To,
+            to,
              style: AppStyles.textStyle20,
           ),
         ),

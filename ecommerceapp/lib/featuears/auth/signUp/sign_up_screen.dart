@@ -75,7 +75,7 @@ class SignUpScreen extends StatelessWidget {
                         },
                       ),
                       SizedBox(height: 10.h),
-                      const HaveAccountText(To: 'Sign In'),
+                      const HaveAccountText(to: 'Sign In'),
                       SizedBox(height: 20.h),
                     ],
                   ),

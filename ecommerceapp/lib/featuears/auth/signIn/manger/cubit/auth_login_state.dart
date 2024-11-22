@@ -15,7 +15,7 @@ class AuthLoginSuccessState extends AuthLoginState {
 }
 
 class AuthLoginFailureState extends AuthLoginState {
-  String errorMessage;
+ final String errorMessage;
   AuthLoginFailureState({
     required this.errorMessage,
   });

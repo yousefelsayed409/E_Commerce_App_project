@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/widgets/Form_Error.dart';
 import '../../../../core/utils/constants.dart';
-import '../../../../core/widgets/defult_button.dart';
 import '../../../../core/widgets/socal_card.dart';
 import '../manger/manger/auth_cubit.dart';
 
@@ -92,10 +91,9 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: const InputDecoration(
         labelText: "Confirm Password",
         hintText: "Re-enter your password",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
+      
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        // suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
+       
       ),
     );
   }
@@ -127,8 +125,7 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: InputDecoration(
           labelText: "Password",
           hintText: "Enter your password",
-          // If  you are using latest version of flutter then lable text and hint text shown like this
-          // if you r using flutter less then 1.20.* then maybe this is not working properly
+         
           floatingLabelBehavior: FloatingLabelBehavior.always,
           // suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
           enabledBorder: outlineInputBorder(),
@@ -163,8 +160,7 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: InputDecoration(
           labelText: "phone",
           hintText: "Enter your phone",
-          // If  you are using latest version of flutter then lable text and hint text shown like this
-          // if you r using flutter less then 1.20.* then maybe this is not working properly
+          
           floatingLabelBehavior: FloatingLabelBehavior.always,
           // suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
           enabledBorder: outlineInputBorder(),
@@ -199,8 +195,7 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: InputDecoration(
           labelText: "Name",
           hintText: "Enter your Name",
-          // If  you are using latest version of flutter then lable text and hint text shown like this
-          // if you r using flutter less then 1.20.* then maybe this is not working properly
+        
           floatingLabelBehavior: FloatingLabelBehavior.always,
           // suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
           enabledBorder: outlineInputBorder(),
@@ -237,8 +232,7 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: InputDecoration(
           labelText: "Email",
           hintText: "Enter your email",
-          // If  you are using latest version of flutter then lable text and hint text shown like this
-          // if you r using flutter less then 1.20.* then maybe this is not working properly
+          
           floatingLabelBehavior: FloatingLabelBehavior.always,
           // suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
           enabledBorder: outlineInputBorder(),

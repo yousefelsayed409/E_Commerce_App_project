@@ -7,13 +7,14 @@ import '../../../../core/models/product_model.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
 
+// ignore: must_be_immutable
 class Customcard extends StatelessWidget {
   Customcard({
     this.ontap,
     required this.model,
-    Key? key,
+    super.key,
     required this.cubit,
-  }) : super(key: key);
+  });
 
   ProductModel model;
   final Function? ontap;

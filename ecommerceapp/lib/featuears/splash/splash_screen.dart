@@ -23,7 +23,7 @@ class _SplashscreenState extends State<Splashscreen> {
     super.initState();
     _navigateToNextScreen();
   }
-
+   
   void _navigateToNextScreen() async {
     await Future.delayed(const Duration(milliseconds: 1200));
 

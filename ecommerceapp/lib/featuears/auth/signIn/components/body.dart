@@ -78,7 +78,7 @@ class Body extends StatelessWidget {
                       SizedBox(height: 20.h),
                       const SocialCardWidget(),
                       SizedBox(height: 20.h),
-                      const DontHaveAccountText(To: ' SignUp'),
+                      const DontHaveAccountText(to: ' SignUp'),
                        SizedBox(height: 20.h),
                     ],
                   ),
