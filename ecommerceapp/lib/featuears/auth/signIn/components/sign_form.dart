@@ -17,7 +17,6 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
-  final _formKey = GlobalKey<FormState>();
   bool? remember = false;
   // final emailcontrollar = TextEditingController();
   // final passwordcontrollar = TextEditingController();
@@ -44,7 +43,7 @@ class _SignFormState extends State<SignForm> {
   Widget build(BuildContext context) {
     var cubit = context.read<AuthSignInCubit>();
     return Form(
-      key: _formKey,
+      key: cubit.signInFormKey,
       child: Column(
         children: [
           buildEmailFormField(controller: cubit.signInEmail),
@@ -77,20 +76,8 @@ class _SignFormState extends State<SignForm> {
             ],
           ),
           FormError(errors: errors),
-          SizedBox(height: 20.h),
-          DefaultButton(
-            text: State is AuthLoginSuccessState ? 'Loading' : "Login",
-            press: () {
-              if (_formKey.currentState!.validate() == true) {
-                // _formKey.currentState!.save();
-                KeyboardUtil.hideKeyboard(context);
-                BlocProvider.of<AuthSignInCubit>(context).Login();
-                // if all are valid then go to success screen
-
-                // Navigator.pushNamed(context, AppRoute.homescreen);
-              }
-            },
-          ),
+        
+         
         ],
       ),
     );

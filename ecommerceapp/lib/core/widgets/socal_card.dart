@@ -29,3 +29,28 @@ class SocalCard extends StatelessWidget {
     );
   }
 }
+
+class SocialCardWidget extends StatelessWidget {
+  const SocialCardWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SocalCard(
+                imageAseetss: Image.asset('assets/Icons/google.png'),
+                press: () {},
+              ),
+              SocalCard(
+                imageAseetss: Image.asset('assets/Icons/facebook.png'),
+                press: () {},
+              ),
+              SocalCard(
+                imageAseetss: Image.asset('assets/Icons/twitter (1).png'),
+                press: () {},
+              ),
+            ],
+          );
+  }
+}

@@ -5,7 +5,6 @@ import 'package:ecommerceapp/featuears/auth/signIn/sign_in_screen.dart';
 import 'package:ecommerceapp/featuears/on_boarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../core/helper/Shared/Local_NetWork.dart';
 import '../../core/utils/app_assets.dart';
 import '../../core/utils/app_styles.dart';
@@ -26,8 +25,7 @@ class _SplashscreenState extends State<Splashscreen> {
   }
 
   void _navigateToNextScreen() async {
-    // انتظار لمدة 2 ثانية
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 1200));
 
     final String? token = CashNetwork.getCashData(key: 'token');
     currenpassword = CashNetwork.getCashData(key: 'password');
@@ -35,6 +33,8 @@ class _SplashscreenState extends State<Splashscreen> {
 bool hasSeenOnboarding = (CashNetwork.getCashData(key: AppConst.onBoardingScreen) == AppConst.onBoardingScreen);
 
     if (token != null && token.isNotEmpty) {
+  debugPrint("______________User token is: $token");
+  debugPrint("______________User password is: ${currenpassword ?? 'null'}");
       CustomNavigation.navigateTo(context, const HomeNavBarWidget3() );
     } else if (hasSeenOnboarding == true) {
       CustomNavigation.navigateTo(context, const SignInScreen());

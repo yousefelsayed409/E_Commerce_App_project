@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/featuears/auth/signIn/components/pic_image_file.dart';
+import 'package:ecommerceapp/featuears/auth/signUp/components/pic_image_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,15 +17,11 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
-  final _formKey = GlobalKey<FormState>();
   String? email;
   String? password;
   String? conform_password;
   bool remember = false;
-  // final namecontrolar = TextEditingController();
-  // final emailcontrolar = TextEditingController();
-  // final phonecontrolar = TextEditingController();
-  // final passwordcontrolar = TextEditingController();
+
   
   final List<String?> errors = [];
 
@@ -49,7 +45,7 @@ class _SignUpFormState extends State<SignUpForm> {
   Widget build(BuildContext context) {
     var cubit = context.read<AuthSignUpCubit>();
     return Form(
-      key: _formKey,
+      key: cubit.signUpFormKey,
       child: Column(
         children: [ 
           const PickImageWidget(),
@@ -64,36 +60,8 @@ class _SignUpFormState extends State<SignUpForm> {
           SizedBox(height: 15.h),
           FormError(errors: errors),
           SizedBox(height: 10.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SocalCard(
-                imageAseetss: Image.asset('assets/Icons/google.png'),
-                press: () {},
-              ),
-              SocalCard(
-                imageAseetss: Image.asset('assets/Icons/facebook.png'),
-                press: () {},
-              ),
-              SocalCard(
-                imageAseetss: Image.asset('assets/Icons/twitter (1).png'),
-                press: () {},
-              ),
-            ],
-          ),
-          SizedBox(height: 10.h),
-          DefaultButton(
-            text: State is RegisterSuccessState ? 'Loading' : "Register",
-            press: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                // if all are valid then go to success screen
-                BlocProvider.of<AuthSignUpCubit>(context).register();
-                // Navigator.pushNamed(context, AppRoute.signInScreen);
-              }
-            },
-          ),
-          SizedBox(height: 10.h),
+          const SocialCardWidget()
+          
         ],
       ),
     );

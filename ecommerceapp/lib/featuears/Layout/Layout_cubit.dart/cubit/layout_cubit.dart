@@ -1,12 +1,9 @@
 import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
 import 'package:ecommerceapp/core/models/Banners_model.dart';
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-
 import '../../../../core/models/Category_model.dart';
 import '../../../../core/models/product_model.dart';
 import '../../../../core/utils/constants.dart';
@@ -36,7 +33,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
     emit(GetUserDataLoadingState());
     Response response = await http.get(
         Uri.parse("https://student.valuxapps.com/api/profile"),
-        headers: {'Authorization': Token!, "lang": "en"});
+        headers: {'Authorization': CashNetwork.getCashData(key: 'token'), "lang": "en"});
     var responseData = jsonDecode(response.body);
     if (responseData['status'] == true) {
       await CashNetwork.insertTocash(
@@ -86,7 +83,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
   void getProducts() async {
     Response response = await http.get(
         Uri.parse('https://student.valuxapps.com/api/home'),
-        headers: {'Authorization': Token!, 'lang': "en"});
+        headers: {'Authorization': CashNetwork.getCashData(key: 'token'), 'lang': "en"});
     var responseBody = jsonDecode(response.body);
     if (responseBody['status'] == true) {
       for (var item in responseBody['data']["products"]) {
@@ -118,7 +115,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
     http.Response response = await http.get(
         Uri.parse('https://student.valuxapps.com/api/favorites'),
         headers: {
-          'Authorization': Token!,
+          'Authorization': CashNetwork.getCashData(key: 'token'),
           'lang': 'en',
         });
     var responsbody = jsonDecode(response.body);
@@ -139,7 +136,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
     http.Response response = await http.post(
         Uri.parse('https://student.valuxapps.com/api/favorites'),
         headers: {
-          'Authorization': Token!,
+          'Authorization': CashNetwork.getCashData(key: 'token'),
           // " lang": ' en',
         },
         body: {
@@ -169,7 +166,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
     carts.clear();
     Response response = await http.get(
       Uri.parse("https://student.valuxapps.com/api/carts"),
-      headers: {"Authorization": Token!, "lang": "en"}
+      headers: {"Authorization": CashNetwork.getCashData(key: 'token'), "lang": "en"}
     );
     var responseBody = jsonDecode(response.body);
     if (responseBody['status'] == true) {
@@ -189,7 +186,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
   try {
     final response = await http.post(
       Uri.parse('https://student.valuxapps.com/api/carts'),
-      headers: {'Authorization': Token!},
+      headers: {'Authorization': CashNetwork.getCashData(key: 'token')},
       body: {'product_id': id},
     );
     final responseBody = jsonDecode(response.body);
@@ -223,7 +220,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
         Uri.parse("https://student.valuxapps.com/api/change-password"),
         headers: {
           'lang': 'en',
-          'Authorization': Token!
+          'Authorization': CashNetwork.getCashData(key: 'token')
         },
         body: {
           'current_password': userCurrentPassword,
@@ -252,7 +249,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
     try {
       Response response = await http.put(
           Uri.parse("https://student.valuxapps.com/api/update-profile"),
-          headers: {'lang': 'en', 'Authorization': Token!},
+          headers: {'lang': 'en', 'Authorization': CashNetwork.getCashData(key: 'token')},
           body: {'name': name, 'email': email, 'phone': phone});
       var responseBody = jsonDecode(response.body);
       if (responseBody['status'] == true) {

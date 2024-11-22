@@ -130,7 +130,7 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
             },
           ),
           SizedBox(height: 15.h),
-          const NoAccountText(To: ' Sign In'),
+          const DontHaveAccountText(To: ' Sign In'),
         ],
       ),
     );

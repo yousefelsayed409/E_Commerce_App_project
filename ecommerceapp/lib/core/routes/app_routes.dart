@@ -40,13 +40,13 @@ class AppRoute {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case splashScreen:
-        return SizeTransition3( Splashscreen());
+        return SizeTransition5( Splashscreen());
       case onBoardingScreen:
-        return SizeTransition3(const OnBoardingScreen());
+        return SizeTransition5(const OnBoardingScreen());
       case signUpScreen:
-        return SizeTransition3(const SignUpScreen());
+        return SizeTransition5(const SignUpScreen());
       case signInScreen:
-        return SizeTransition3(const SignInScreen());
+        return SizeTransition5(const SignInScreen());
 
       case profileScreen:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
@@ -54,7 +54,7 @@ class AppRoute {
         return MaterialPageRoute(
             builder: (_) => DarkAndLightView());
       case forgetPassWordScreen:
-        return SizeTransition3(const ForgotPasswordScreen());
+        return SizeTransition5(const ForgotPasswordScreen());
       case loginSuccess:
         return SizeTransition5(const LoginSuccessScreen());
       case homescreen:

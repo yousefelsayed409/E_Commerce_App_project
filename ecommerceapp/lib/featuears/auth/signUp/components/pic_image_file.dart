@@ -1,7 +1,5 @@
 import 'dart:io';
 
-
-import 'package:ecommerceapp/featuears/auth/signIn/manger/cubit/auth_login_cubit.dart';
 import 'package:ecommerceapp/featuears/auth/signUp/manger/manger/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

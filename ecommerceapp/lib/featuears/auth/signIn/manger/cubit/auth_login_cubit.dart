@@ -14,6 +14,8 @@ class AuthSignInCubit extends Cubit<AuthLoginState> {
   TextEditingController signInEmail = TextEditingController();
   //Sign in password
   TextEditingController signInPassword = TextEditingController();
+ //Sign in Form key
+  GlobalKey<FormState> signInFormKey = GlobalKey();
  
   void Login() async {
     emit(AuthLoginLoadingState());

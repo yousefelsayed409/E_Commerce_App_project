@@ -24,6 +24,8 @@ class AuthSignUpCubit extends Cubit<AuthState> {
   TextEditingController signUpPassword = TextEditingController();
   //Sign up confirm password
   TextEditingController confirmPassword = TextEditingController();
+ //Sign up Form key
+  GlobalKey<FormState> signUpFormKey = GlobalKey();
 
 void uploadProfilePic(XFile? image) {
   if (image != null) {

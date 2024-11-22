@@ -1,3 +1,5 @@
+import 'package:ecommerceapp/core/widgets/custom_nav.dart';
+import 'package:ecommerceapp/featuears/Layout/widget/home_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,7 +29,7 @@ class Body extends StatelessWidget {
               text: "Back to home",
               press: () {
                 //////////////////////!
-                Navigator.pushNamed(context, AppRoute.layoutScreen);
+                CustomNavigation.navigateAndFinish(context, HomeNavBarWidget3());
               },
             ),
           ),

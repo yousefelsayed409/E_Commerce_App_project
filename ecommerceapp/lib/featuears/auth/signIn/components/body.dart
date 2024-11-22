@@ -1,4 +1,6 @@
-
+import 'package:ecommerceapp/core/widgets/custom_loading_indicator.dart';
+import 'package:ecommerceapp/core/widgets/defult_button.dart';
+import 'package:ecommerceapp/core/widgets/keyboar_Util.dart';
 import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +41,8 @@ class Body extends StatelessWidget {
         }
       },
       builder: (context, state) {
+        var cubit = context.read<AuthSignInCubit>();
+
         return SafeArea(
           child: SingleChildScrollView(
             child: SizedBox(
@@ -57,29 +61,25 @@ class Body extends StatelessWidget {
                       ),
                       SizedBox(height: 35.h),
                       const SignForm(),
-                      SizedBox(height: 20.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SocalCard(
-                            imageAseetss:
-                                Image.asset('assets/Icons/google.png'),
-                            press: () {},
-                          ),
-                          SocalCard(
-                            imageAseetss:
-                                Image.asset('assets/Icons/facebook.png'),
-                            press: () {},
-                          ),
-                          SocalCard(
-                            imageAseetss:
-                                Image.asset('assets/Icons/twitter (1).png'),
-                            press: () {},
-                          ),
-                        ],
+                        SizedBox(height: 20.h),
+                    state is AuthLoginLoadingState? const CustomLoadingWidget() :   DefaultButton(
+                        text:  "Login",
+                        press: () {
+                          if (cubit.signInFormKey.currentState!.validate() == true) {
+                            // _formKey.currentState!.save();
+                            KeyboardUtil.hideKeyboard(context);
+                            BlocProvider.of<AuthSignInCubit>(context).Login();
+                            // if all are valid then go to success screen
+
+                            // Navigator.pushNamed(context, AppRoute.homescreen);
+                          }
+                        },
                       ),
                       SizedBox(height: 20.h),
-                      const NoAccountText(To: ' SignUp'),
+                      const SocialCardWidget(),
+                      SizedBox(height: 20.h),
+                      const DontHaveAccountText(To: ' SignUp'),
+                       SizedBox(height: 20.h),
                     ],
                   ),
                 ),
