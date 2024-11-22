@@ -40,7 +40,7 @@ class AppRoute {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case splashScreen:
-        return SizeTransition5( Splashscreen());
+        return SizeTransition3( Splashscreen());
       case onBoardingScreen:
         return SizeTransition5(const OnBoardingScreen());
       case signUpScreen:

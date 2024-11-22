@@ -30,11 +30,11 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LayoutCubit()
+          ..getProducts()
             ..getCarts()
             ..getfavorite()
             ..getBannersData()
-            ..getCategoriesData()
-            ..getProducts(),
+            ..getCategoriesData(),
         ),
       ],
       child: ScreenUtilInit(
