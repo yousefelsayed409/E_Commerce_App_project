@@ -7,11 +7,12 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // الحصول على الثيم الحالي
     final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
+             automaticallyImplyLeading: false,
+
         centerTitle: true,
         backgroundColor: theme.appBarTheme.backgroundColor ?? AppColors.Teal, // يستخدم لون الثيم الحالي
         title: const Text("Profile"),

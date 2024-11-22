@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 AppBar buildAppBarfav(BuildContext context) {
   return AppBar(
+     automaticallyImplyLeading: false,
     backgroundColor: Colors.teal,
     elevation: 5,
     centerTitle: true,
