@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,13 +55,22 @@ class FavoriteScreen extends StatelessWidget {
                                 padding: EdgeInsets.all(10.h),
                                 color: Colors.white.withOpacity(0.5),
                                 child: Row(
-                                  children: [
-                                    Image.network(
-                                      cubit.favorites[index].image!,
-                                      height: 100,
-                                      width: 100,
-                                      fit: BoxFit.fill,
-                                    ),
+                                  children: [ 
+                                    CachedNetworkImage(
+            height: 100.h,
+            width: 100.w,
+            imageUrl: cubit.favorites[index].image!,
+            fit: BoxFit.fill,
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+                const Center(child: CupertinoActivityIndicator()),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          ),
+                                    // Image.network(
+                                      
+                                    //   height: 100,
+                                    //   width: 100,
+                                    //   fit: BoxFit.fill,
+                                    // ),
                                     SizedBox(
                                       width: 10.w,
                                     ),

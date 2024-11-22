@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swipe_action_cell/flutter_swipe_action_cell.dart';
+import 'package:redacted/redacted.dart';
 import '../../core/widgets/empty_screen.dart';
 import '../../core/widgets/snakbar_widget.dart';
 import '../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
@@ -65,12 +68,27 @@ class CartScreen extends StatelessWidget {
                                 ),
                                 child: Row(
                                   children: [
-                                    Image.network(
-                                      cubit.carts[index].image!,
-                                      height: 100,
-                                      width: 100,
-                                      fit: BoxFit.fill,
-                                    ),
+                                    CachedNetworkImage(
+            height: 100.h,
+            width: 100.w,
+            imageUrl:cubit.carts[index].image!,
+            fit: BoxFit.fill,
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+                const Center(child: CupertinoActivityIndicator()),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          ).redacted(
+  context: context,
+  redact: true,
+  configuration: RedactedConfiguration(
+    animationDuration : const Duration(milliseconds: 800), //default
+  ),
+),
+                                    // Image.network(
+                                    //   cubit.carts[index].image!,
+                                    //   height: 100,
+                                    //   width: 100,
+                                    //   fit: BoxFit.fill,
+                                    // ),
                                     SizedBox(width: 20.w),
                                     Expanded(
                                       child: Column(

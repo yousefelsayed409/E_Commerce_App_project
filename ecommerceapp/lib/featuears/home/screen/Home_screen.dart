@@ -141,7 +141,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 cubit: cubit),
                           );
                         },
-                      )
+                      ).redacted(
+  context: context,
+  redact: true,
+  configuration: RedactedConfiguration(
+    animationDuration : const Duration(milliseconds: 800), //default
+  ),
+)
               ],
             ),
           ));
