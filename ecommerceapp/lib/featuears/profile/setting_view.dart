@@ -13,43 +13,35 @@ class _DarkAndLightViewState extends State<DarkAndLightView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ThemCubit(),
-      child: Builder(
-        builder: (context) {
-          // استخدم BuildContext الجديد بعد BlocProvider
-          final mode = BlocProvider.of<ThemCubit>(context);
+    final mode = BlocProvider.of<ThemCubit>(context);
 
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('اختيار الثيم'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('اختيار الثيم'),
+      ),
+      body: Center(
+        child: DropdownButton<ThemeState>(
+          value: _selectedTheme,
+          hint: const Text('اختر الثيم'),
+          items: const [
+            DropdownMenuItem(
+              value: ThemeState.Dark,
+              child: Text('DarkMod'),
             ),
-            body: Center(
-              child: DropdownButton<ThemeState>(
-                value: _selectedTheme,
-                hint: Text('اختر الثيم'),
-                items: [
-                  DropdownMenuItem(
-                    value: ThemeState.Dark,
-                    child: Text('DarkMod'),
-                  ),
-                  DropdownMenuItem(
-                    value: ThemeState.Light,
-                    child: Text('LightMod'),
-                  ),
-                ],
-                onChanged: (ThemeState? newValue) {
-                  setState(() {
-                    _selectedTheme = newValue;
-                  });
-                  if (newValue != null) {
-                    mode.ChangeThem(newValue);
-                  }
-                },
-              ),
+            DropdownMenuItem(
+              value: ThemeState.Light,
+              child: Text('LightMod'),
             ),
-          );
-        },
+          ],
+          onChanged: (ThemeState? newValue) {
+            setState(() {
+              _selectedTheme = newValue;
+            });
+            if (newValue != null) {
+              mode.ChangeThem(newValue);
+            }
+          },
+        ),
       ),
     );
   }

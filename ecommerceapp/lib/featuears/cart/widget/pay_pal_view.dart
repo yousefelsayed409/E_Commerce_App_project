@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/utils/app_assets.dart';
+import 'package:ecommerceapp/core/widgets/api_constants.dart';
 import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
 import 'package:ecommerceapp/featuears/cart/widget/cart_info_item.dart';
 import 'package:flutter/material.dart';
@@ -9,15 +10,15 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../core/widgets/defult_button.dart';
 
-class PayPal extends StatefulWidget {
+class PayPalScreen extends StatefulWidget {
 
-  const PayPal({super.key, });
+  const PayPalScreen({super.key, });
 
   @override
-  State<PayPal> createState() => _PayPalState();
+  State<PayPalScreen> createState() => _PayPalScreenState();
 }
 
-class _PayPalState extends State<PayPal> {
+class _PayPalScreenState extends State<PayPalScreen> {
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<LayoutCubit>(context);
@@ -37,7 +38,7 @@ class _PayPalState extends State<PayPal> {
           child: Column(
             children: [
               SizedBox(height: 18.h),
-              Container(
+              SizedBox(
                 height: 220.h,
                 child: SvgPicture.asset(AppAssets.imagecompletCart),
               ),
@@ -64,10 +65,8 @@ class _PayPalState extends State<PayPal> {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (BuildContext context) => PaypalCheckout(
                       sandboxMode: true,
-                clientId:
-                    "AQDmPCYzBgTzPfEFnldVqBziRICrVFd8aF0gc4fF-4GEDZa15S3xwVDHqJNaXoKTw1b0G6xlCcmrVLt9",
-                secretKey:
-                    "EO7ouu9r4MtKweblbTRE5sqx_KHoG0sPKzJ466jmQ9q_Tu9uFACL1YjrRtzYGDdFyn-2YXEmcxLkOvGj",
+                clientId: ApiContest.clientId,
+                secretKey:ApiContest .secretKey,
                 returnURL: "success.snippetcoder.com",
                 cancelURL: "cancel.snippetcoder.com",
                 transactions:  [
@@ -75,7 +74,7 @@ class _PayPalState extends State<PayPal> {
                     "amount": {
                       "total": '${cubit.totalPrice}',
                       "currency": "USD",
-                      "details": {
+                      "details": const {
                         // "subtotal": '70',
                         // "shipping": '0',
                         // "shipping_discount": 0
@@ -86,8 +85,8 @@ class _PayPalState extends State<PayPal> {
                     //   "allowed_payment_method":
                     //       "INSTANT_FUNDING_SOURCE"
                     // },
-                    "item_list": {
-                      "items": [
+                    "item_list": const {
+                      "items": const [
                         // {
                         //   "name": "Apple",
                         //   "quantity": 4,

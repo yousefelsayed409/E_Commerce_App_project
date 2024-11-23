@@ -57,10 +57,10 @@ class MyAccountScreen extends StatelessWidget {
                           cubit.userModel!.email!,
                           style: theme.textTheme.bodyLarge, 
                         ), 
-                         Text(
-  cubit.userModel!.id?.toString() ?? 'Unknown ID', 
-  style: theme.textTheme.bodyLarge,
-),
+//                          Text(
+//   cubit.userModel!.id?.toString() ?? 'Unknown ID', 
+//   style: theme.textTheme.bodyLarge,
+// ),
                         const SizedBox(height: 30),
                         DefaultButton(
                           text: "Change Password",

@@ -91,7 +91,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) =>  PayPal(),
+                    builder: (BuildContext context) =>  const PayPalScreen(),
                   ));
                 },
                 child: Container(
@@ -112,7 +112,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => const CompletPayScreen(),
+                    builder: (BuildContext context) => const PayMobScreen(),
                   ));
                 },
                 child: Container(

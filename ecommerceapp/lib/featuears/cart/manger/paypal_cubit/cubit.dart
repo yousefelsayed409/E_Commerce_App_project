@@ -3,7 +3,7 @@ import 'package:ecommerceapp/core/widgets/api_constants.dart';
 import 'package:ecommerceapp/featuears/cart/data/models/authentication_request_model.dart';
 import 'package:ecommerceapp/featuears/cart/data/models/order_registration_model.dart';
 import 'package:ecommerceapp/featuears/cart/data/models/payment_reqeust_model.dart';
-import 'package:ecommerceapp/featuears/cart/manger/cubit/state.dart';
+import 'package:ecommerceapp/featuears/cart/manger/paypal_cubit/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 

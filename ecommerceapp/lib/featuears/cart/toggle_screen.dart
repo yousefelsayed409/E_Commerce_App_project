@@ -4,14 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/widgets/custom_nav.dart';
 import '../../core/widgets/snakbar_widget.dart';
-import 'manger/cubit/cubit.dart';
-import 'manger/cubit/state.dart';
+import 'manger/paypal_cubit/cubit.dart';
+import 'manger/paypal_cubit/state.dart';
 import 'ref_code_screem.dart';
 import 'visa_screen.dart';
 
 
 class ToggleScreen extends StatelessWidget {
-  const ToggleScreen({Key? key}) : super(key: key);
+  const ToggleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +21,17 @@ class ToggleScreen extends StatelessWidget {
           if (state is PaymentRefCodeSuccessStates) {
              showsnakbarwidget(context, "Success get ref code ", true);
            
-            CustomNavigation.navigateAndFinish(context, const ReferenceScreen());
+            CustomNavigation.navigateTo(context, const ReferenceScreen());
           }
           if (state is PaymentRefCodeErrorStates) {
-               showsnakbarwidget(context, "Error get ref code ", false);
+               showsnakbarwidget(context, "Error get ref code  , please try again", false);
            
           }
         },
         builder: (context, state) {
           var cubit = PaymentCubit.get(context);
           return Scaffold(
+            appBar: AppBar(),
             body: Padding(
               padding: const EdgeInsets.all(18.0),
               child: Column(
@@ -50,7 +51,7 @@ class ToggleScreen extends StatelessWidget {
                           border:
                               Border.all(color: Colors.black87, width: 2.0),
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children:  [
                             Image(
@@ -73,7 +74,7 @@ class ToggleScreen extends StatelessWidget {
                   Expanded(
                     child: InkWell(
                       onTap: () {
-                        CustomNavigation.navigateAndFinish(context, const VisaScreen());
+                        CustomNavigation.navigateTo(context, const VisaScreen());
                       },
                       child: Container(
                         width: double.infinity,
@@ -82,7 +83,7 @@ class ToggleScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15.0),
                           border: Border.all(color: Colors.black, width: 2.0),
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children:  [

@@ -1,10 +1,11 @@
 import 'package:ecommerceapp/core/utils/app_assets.dart';
 import 'package:ecommerceapp/core/widgets/api_constants.dart';
 import 'package:ecommerceapp/core/widgets/defult_button.dart';
+import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
 import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
 import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_state.dart';
-import 'package:ecommerceapp/featuears/cart/manger/cubit/cubit.dart';
-import 'package:ecommerceapp/featuears/cart/manger/cubit/state.dart';
+import 'package:ecommerceapp/featuears/cart/manger/paypal_cubit/cubit.dart';
+import 'package:ecommerceapp/featuears/cart/manger/paypal_cubit/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,33 +15,35 @@ import '../../core/widgets/custom_nav.dart';
 import 'toggle_screen.dart';
 import 'widget/cart_info_item.dart';
 
-class CompletPayScreen extends StatefulWidget {
-  const CompletPayScreen({super.key});
+class PayMobScreen extends StatefulWidget {
+  const PayMobScreen({super.key});
 
   @override
-  State<CompletPayScreen> createState() => _CompletPayScreenState();
+  State<PayMobScreen> createState() => _PayMobScreenState();
 }
 
-class _CompletPayScreenState extends State<CompletPayScreen> {
+class _PayMobScreenState extends State<PayMobScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PaymentCubit, PaymentStates>(
       listener: (context, state) {
         if (state is PaymentOrderIdSuccessStates) {
           // Navigate to the next screen when order ID is obtained successfully
-          CustomNavigation.navigateTo(context, ToggleScreen());
+          CustomNavigation.navigateTo(context, const ToggleScreen());
         } else if (state is PaymentAuthErrorStates ||
                    state is PaymentOrderIdErrorStates) {
           // Show error message
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: ${state is PaymentAuthErrorStates ? state.error : (state as PaymentOrderIdErrorStates).error}')),
-          );
+          showsnakbarwidget(context, " please try again", false);
+
+    //       ScaffoldMessenger.of(context).showSnackBar(
+    //  const SnackBar(content: const Text('Error: Please try again ')),
+
+    //         // SnackBar(content: Text('Error: ${state is PaymentAuthErrorStates ? state.error : (state as PaymentOrderIdErrorStates).error}')),
+    //       );
         }
       },
       builder: (context, state) {
-        return BlocBuilder<LayoutCubit, LayoutStates>(
-          builder: (context, layoutState) {
-            var cuubit = BlocProvider.of<LayoutCubit>(context);
+        var cuubit = BlocProvider.of<LayoutCubit>(context);
             var cubit = BlocProvider.of<PaymentCubit>(context);
     
             return Scaffold(
@@ -60,7 +63,7 @@ class _CompletPayScreenState extends State<CompletPayScreen> {
                   child: Column(
                     children: [
                       SizedBox(height: 18.h),
-                      Container(
+                      SizedBox(
                         height: 220.h,
                         child: SvgPicture.asset(AppAssets.imagecompletCart),
                       ),
@@ -94,7 +97,7 @@ class _CompletPayScreenState extends State<CompletPayScreen> {
                             );
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Authorization token is missing')),
+                              const SnackBar(content: Text('Authorization token is missing')),
                             );
                           }
                         },
@@ -105,8 +108,6 @@ class _CompletPayScreenState extends State<CompletPayScreen> {
                 ),
               ),
             );
-          },
-        );
       },
     );
   }

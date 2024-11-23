@@ -18,6 +18,8 @@ class ApiContest {
   static const String integrationIdKiosk = '4564582';
 
   static String refCode = '';
+  static String clientId = "AQDmPCYzBgTzPfEFnldVqBziRICrVFd8aF0gc4fF-4GEDZa15S3xwVDHqJNaXoKTw1b0G6xlCcmrVLt9";
+  static String secretKey =  "EO7ouu9r4MtKweblbTRE5sqx_KHoG0sPKzJ466jmQ9q_Tu9uFACL1YjrRtzYGDdFyn-2YXEmcxLkOvGj";
 }
 
 class AppImages {

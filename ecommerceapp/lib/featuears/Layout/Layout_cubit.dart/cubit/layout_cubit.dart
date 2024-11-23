@@ -104,9 +104,9 @@ class LayoutCubit extends Cubit<LayoutStates> {
       .toList();
   emit(FilterProductsSuccessState());
 }
-
-  ///Todo ????????????????????????????????????????????
-
+  //Todo ??????,
+  // ??????
+  // !
   List<ProductModel> favorites = [];
   Set<String> FavoriteId = {};
 
@@ -119,7 +119,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
           'lang': 'en',
         });
     var responsbody = jsonDecode(response.body);
-    if (responsbody['status'] == true) {
+    if (responsbody['status'] == true ) {
       for (var item in responsbody['data']['data']) {
         favorites.add(ProductModel.fromJson(data: item['product']));
         FavoriteId.add(item['product']['id'].toString());

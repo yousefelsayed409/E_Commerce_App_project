@@ -3,12 +3,11 @@ import 'package:ecommerceapp/core/theme/enums/themstate.dart';
 import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
 import 'package:ecommerceapp/featuears/auth/signIn/manger/cubit/auth_login_cubit.dart';
 import 'package:ecommerceapp/featuears/auth/signUp/manger/manger/auth_cubit.dart';
-import 'package:ecommerceapp/featuears/cart/manger/cubit/cubit.dart';
+import 'package:ecommerceapp/featuears/cart/manger/paypal_cubit/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../routes/app_routes.dart';
-
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -30,7 +29,7 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LayoutCubit()
-          ..getProducts()
+            ..getProducts()
             ..getCarts()
             ..getfavorite()
             ..getBannersData()
@@ -38,17 +37,24 @@ class App extends StatelessWidget {
         ),
       ],
       child: ScreenUtilInit(
-        designSize: const Size(360, 690),
+           designSize: const Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
-        builder: (context, child) {
-          return const MaterialApp(
+    builder: (context, child) {
+      return BlocBuilder<ThemCubit, ThemState>(
+        builder: (context, state) {
+          ThemeData appTheme = state is AppLightThem
+              ? ThemeData.light()
+              : ThemeData.dark();
+
+          return MaterialApp(
+            theme: appTheme,
             debugShowCheckedModeBanner: false,
             initialRoute: AppRoute.splashScreen,
             onGenerateRoute: AppRoute.generateRoute,
           );
         },
-      ),
-    );
+      );
+  }));
   }
 }
