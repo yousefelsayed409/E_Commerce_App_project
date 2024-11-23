@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +28,7 @@ class UpdateDataScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.teal,
-        title: const Text("UpDate Profile"),
+        title: const Text("UpDate Profile" ,style: TextStyle(color: AppColors.white),),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 50.0, left: 32, right: 32.0),

@@ -63,6 +63,7 @@ dependencies:
   redacted: ^1.0.12
   fluttertoast: ^8.2.8
   image_picker: ^1.1.2
+  http_parser: ^4.0.2
   # flutter_paypal_checkout: ^1.0.1
 
 dev_dependencies:

@@ -51,13 +51,16 @@ class MyAccountScreen extends StatelessWidget {
                         const SizedBox(height: 15),
                         Text(
                           cubit.userModel!.name!,
-                          style: theme.textTheme.headlineMedium, // استخدام ستايل النص من الثيم
-                        ),
+                          style: theme.textTheme.headlineMedium,),
                         const SizedBox(height: 10),
                         Text(
                           cubit.userModel!.email!,
-                          style: theme.textTheme.bodyLarge, // استخدام ستايل النص من الثيم
-                        ),
+                          style: theme.textTheme.bodyLarge, 
+                        ), 
+                         Text(
+  cubit.userModel!.id?.toString() ?? 'Unknown ID', 
+  style: theme.textTheme.bodyLarge,
+),
                         const SizedBox(height: 30),
                         DefaultButton(
                           text: "Change Password",

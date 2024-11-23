@@ -21,7 +21,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
   final pageController = PageController();
 
   @override
@@ -67,14 +66,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 15.h,
                 ),
-              
+
                 // Todo: Display categories
                 cubit.categories.isEmpty
                     ? const Center(
                         child: CupertinoActivityIndicator(),
                       )
                     : SizedBox(
-                        height: 70.h,
+                        height: 50.h,
                         width: double.infinity,
                         child: ListView.separated(
                             physics: const BouncingScrollPhysics(),
@@ -91,12 +90,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 backgroundImage:
                                     NetworkImage(cubit.categories[index].url!),
                               ).redacted(
-  context: context,
-  redact: true,
-  configuration: RedactedConfiguration(
-    animationDuration : const Duration(milliseconds: 800), //default
-  ),
-);
+                                context: context,
+                                redact: true,
+                                configuration: RedactedConfiguration(
+                                  animationDuration: const Duration(
+                                      milliseconds: 800), //default
+                                ),
+                              );
                             }),
                       ),
                 SizedBox(
@@ -105,56 +105,51 @@ class _HomeScreenState extends State<HomeScreen> {
                 const HeaderSection(textone: "Products", textTow: "See More"),
 
                 SizedBox(
-                  height: 90.h,
+                  height: 40.h,
                 ),
                 // Todo: Display products
                 cubit.products.isEmpty
-                    ? const
-                     Center(
+                    ? const Center(
                         child: CupertinoActivityIndicator(),
                       )
                     : DynamicHeightGridView(
                         crossAxisCount: 2,
                         crossAxisSpacing: 20,
                         mainAxisSpacing: 80,
-                        itemCount:cubit.filteredProducts.isEmpty ?
-                          cubit.products.length :
-                          cubit.filteredProducts.length,
+                        itemCount: cubit.filteredProducts.isEmpty
+                            ? cubit.products.length
+                            : cubit.filteredProducts.length,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         builder: (context, index) {
+                          final product = cubit.filteredProducts.isEmpty
+                              ? cubit.products[index]
+                              : cubit.filteredProducts[index];
                           return GestureDetector(
                             onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => DetailsScreen(
-                                    ppprouduct: cubit.products[index],
+                                    ppprouduct: product,
                                   ),
                                 ),
                               );
                             },
-                            child: Customcard(
-                                model: cubit.filteredProducts.isEmpty
-                                    ? cubit.products[index]
-                                    : cubit.filteredProducts[index],
-                                cubit: cubit),
+                            child: Customcard(model: product, cubit: cubit),
                           );
                         },
                       ).redacted(
-  context: context,
-  redact: true,
-  configuration: RedactedConfiguration(
-    animationDuration : const Duration(milliseconds: 800), //default
-  ),
-)
+                        context: context,
+                        redact: true,
+                        configuration: RedactedConfiguration(
+                          animationDuration:
+                              const Duration(milliseconds: 800), //default
+                        ),
+                      )
               ],
             ),
           ));
         });
-
-        
   }
-  
 }
-

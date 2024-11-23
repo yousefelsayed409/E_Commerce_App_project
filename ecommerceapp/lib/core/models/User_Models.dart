@@ -3,7 +3,8 @@ class UserModel {
   String? email;
   String? phone;
   String? image;
-  String? token;
+  String? token; 
+  int? id ;
 
   // Constructor
   UserModel(this.name, this.email, this.token, this.phone, this.image);
@@ -16,6 +17,7 @@ class UserModel {
     phone = data['phone'];
     image = data['image'];
     token = data['token'];
+    id  = data["id"];
   }
 
   // To Map
@@ -26,6 +28,7 @@ class UserModel {
       'phone': phone,
       'token': token,
       'image': image,
+      'id' : id
     };
   }
 }

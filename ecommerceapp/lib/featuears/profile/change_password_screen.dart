@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +27,7 @@ class ChangePasswordScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.teal,
-        title: const Text("change passwword"),
+        title: const Text("change passwword", style: TextStyle(color: AppColors.white),),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 50.0, left: 32, right: 32.0),

@@ -97,13 +97,13 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
   // filtered products
   List<ProductModel> filteredProducts = [];
-  void filterProducts({required String input}) {
-    filteredProducts = products
-        .where((element) =>
-            element.name!.toLowerCase().startsWith(input.toLowerCase()))
-        .toList();
-    emit(FilterProductsSuccessState());
-  }
+ void filterProducts({required String input}) {
+  filteredProducts = products
+      .where((element) =>
+          element.name!.toLowerCase().startsWith(input.toLowerCase()))
+      .toList();
+  emit(FilterProductsSuccessState());
+}
 
   ///Todo ????????????????????????????????????????????
 
@@ -271,9 +271,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
       emit(LogOutLoadingState());
       var response = await http.post(Uri.parse("https://student.valuxapps.com/api/logout"),
       headers: {'lang': 'ar', 'Authorization': CashNetwork.getCashData(key: 'token')},
-          body: {'fcm_token': CashNetwork.getCashData(key: 'token') , });
-       
-      
+          body: {'fcm_token': CashNetwork.getCashData(key: 'token') , });      
       emit(LogOutSuccessState());
     }  catch (e) {
       emit(LogOutFailureState(errorMessage: e.toString()));

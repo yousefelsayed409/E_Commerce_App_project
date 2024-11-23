@@ -14,8 +14,7 @@ class ProfileScreen extends StatelessWidget {
              automaticallyImplyLeading: false,
 
         centerTitle: true,
-        backgroundColor: theme.appBarTheme.backgroundColor ?? AppColors.Teal, // يستخدم لون الثيم الحالي
-        title: const Text("Profile"),
+        backgroundColor: AppColors.Teal,  title: const Text("Profile" ,style: TextStyle(color: AppColors.white),),
       ),
       body: const Bodyprofile(),
     );

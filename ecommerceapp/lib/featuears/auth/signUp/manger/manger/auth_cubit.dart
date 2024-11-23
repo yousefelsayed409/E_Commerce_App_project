@@ -52,7 +52,7 @@ void uploadProfilePic(XFile? image) {
         "email": signUpEmail.text,
         "phone": signUpPhoneNumber.text,
         "password": signUpPassword.text,
-        "image": imageUrl,
+        "image": '',
       },
     );
 
