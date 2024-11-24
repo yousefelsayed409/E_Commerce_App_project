@@ -68,7 +68,7 @@ class _ProductDescriptionState extends State<ProductDescription> {
                     cubit.AddOrRemoveFromFavorites(
                         productId: widget.product.id.toString());
                     showsnakbarwidget(
-                        context, 'Successfully add To Favorite', true);
+                        context, 'Success', true);
                   },
                   child: Icon(
                     Icons.favorite,

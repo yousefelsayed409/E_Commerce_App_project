@@ -17,8 +17,6 @@ class SwiperWidget extends StatefulWidget {
 }
 
 class _SwiperWidgetState extends State<SwiperWidget> {
-  final pageController = PageController();
-
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<LayoutCubit>(context);
@@ -29,54 +27,37 @@ class _SwiperWidgetState extends State<SwiperWidget> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(40.h),
         child: Swiper(
-          // controller: ,
           itemCount: cubit.banners.length,
-
+          autoplay: true,
+          autoplayDelay: 1000, 
+          duration: 700, 
           itemBuilder: (context, index) {
             return CachedNetworkImage(
               height: 120.h,
               width: 120.w,
               fit: BoxFit.fill,
-              imageUrl: '${cubit.banners[index].url!}',
+              imageUrl: cubit.banners[index].url!,
               progressIndicatorBuilder: (context, url, downloadProgress) =>
-                  Center(child: CupertinoActivityIndicator()),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+                  const Center(child: CupertinoActivityIndicator()),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             );
-            // Image.network(
-            //       cubit.banners[index].url!,
-            //       fit: BoxFit.fill,
-            //     );
           },
           pagination: const SwiperPagination(
-              margin: EdgeInsets.only(
-                top: 0,
-              ),
-              builder: DotSwiperPaginationBuilder(
-                  activeSize: 15,
-                  activeColor: AppColors.red,
-                  color: AppColors.white)),
+            margin: EdgeInsets.only(top: 0),
+            builder: DotSwiperPaginationBuilder(
+              activeSize: 15,
+              activeColor: AppColors.red,
+              color: AppColors.white,
+            ),
+          ),
         ),
       ),
     ).redacted(
-  context: context,
-  redact: true,
-  configuration: RedactedConfiguration(
-    animationDuration : const Duration(milliseconds: 800), //default
-  ),
-);
+      context: context,
+      redact: true,
+      configuration: RedactedConfiguration(
+        animationDuration: const Duration(milliseconds: 800), //default
+      ),
+    );
   }
-} 
-
-
-
-
-// PageView.builder(  
-//                   controller: pageController,
-//                   physics: const BouncingScrollPhysics(),
-//                   itemCount: cubit.banners.length,
-//                   itemBuilder: (context, index) {
-//                     return Image.network(
-//                       cubit.banners[index].url!,
-//                       fit: BoxFit.fill,
-//                     );
-//                   });
+}

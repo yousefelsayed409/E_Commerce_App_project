@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -81,6 +82,8 @@ class Customcard extends StatelessWidget {
                           // Add | remove product favorites
                           cubit.AddOrRemoveFromFavorites(
                               productId: model.id.toString());
+                              showsnakbarwidget(
+                        context, 'Success', true);
                         },
                       )
                     ],
