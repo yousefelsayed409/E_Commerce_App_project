@@ -1,4 +1,5 @@
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
+import 'package:ecommerceapp/featuears/home/screen/widget/carousel_widget.dart';
 import 'package:ecommerceapp/featuears/home/screen/widget/home_header.dart';
 import 'package:ecommerceapp/featuears/home/screen/widget/swiper_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? const Center(
                         child: CupertinoActivityIndicator(),
                       )
-                    : const SwiperWidget(),
+                    : const CarouselWidget(),
                 SizedBox(
                   height: 15.h,
                 ),

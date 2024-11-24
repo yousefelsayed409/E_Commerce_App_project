@@ -103,7 +103,7 @@ class Customcard extends StatelessWidget {
         Positioned(
           right: 0,
           // top: -40,
-          bottom: 90.h,
+          bottom: 95.h,
           // top: -1,
           child: CachedNetworkImage(
             height: 110.h,

@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/core/theme/cubit/them_cubit.dart';
-import 'package:ecommerceapp/core/theme/enums/themstate.dart';
+import 'package:ecommerceapp/core/theme/enums/them_enum.dart';
 import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
 import 'package:ecommerceapp/featuears/auth/signIn/manger/cubit/auth_login_cubit.dart';
 import 'package:ecommerceapp/featuears/auth/signUp/manger/manger/auth_cubit.dart';
@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../routes/app_routes.dart';
+
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -25,7 +26,7 @@ class App extends StatelessWidget {
           create: (context) => PaymentCubit()..getAuthToken(),
         ),
         BlocProvider(
-          create: (context) => ThemCubit()..ChangeThem(ThemeState.Initial),
+          create: (context) => ThemCubit()..changeTheme(ThemeEnumState.Initial),
         ),
         BlocProvider(
           create: (context) => LayoutCubit()
@@ -37,24 +38,28 @@ class App extends StatelessWidget {
         ),
       ],
       child: ScreenUtilInit(
-           designSize: const Size(360, 690),
+        designSize: const Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
-    builder: (context, child) {
-      return BlocBuilder<ThemCubit, ThemState>(
-        builder: (context, state) {
-          ThemeData appTheme = state is AppLightThem
-              ? ThemeData.light()
-              : ThemeData.dark();
+        builder: (context, child) {
+          return BlocBuilder<ThemCubit, ThemState>(
+            builder: (context, state) {
+              final theme = state is AppLightThem
+                  ? state.themeData
+                  : state is AppDarkThem
+                      ? state.themeData
+                      : ThemeData.light();
 
-          return MaterialApp(
-            theme: appTheme,
-            debugShowCheckedModeBanner: false,
-            initialRoute: AppRoute.splashScreen,
-            onGenerateRoute: AppRoute.generateRoute,
+              return MaterialApp(
+                theme: theme,
+                debugShowCheckedModeBanner: false,
+                initialRoute: AppRoute.splashScreen,
+                onGenerateRoute: AppRoute.generateRoute,
+              );
+            },
           );
         },
-      );
-  }));
+      ),
+    );
   }
 }

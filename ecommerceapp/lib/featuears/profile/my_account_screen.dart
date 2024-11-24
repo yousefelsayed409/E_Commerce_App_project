@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/utils/app_color.dart';
+import 'package:ecommerceapp/core/utils/app_styles.dart';
 import 'package:ecommerceapp/featuears/profile/update_data_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,19 +20,16 @@ class MyAccountScreen extends StatelessWidget {
       },
       builder: (context, state) {
         final cubit = BlocProvider.of<LayoutCubit>(context);
-        final theme = Theme.of(context); // الحصول على الثيم الحالي
+        final theme = Theme.of(context);    
         
         if (cubit.userModel == null) cubit.getUserData();
         return Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            backgroundColor: theme.appBarTheme.backgroundColor ?? AppColors.Teal, // استخدام لون الثيم
+            backgroundColor:  AppColors.Teal, 
             title: Text(
               "My Account",
-              style: theme.textTheme.headlineMedium!.copyWith(
-                color: theme.colorScheme.onSecondary, // يتغير بناءً على الثيم
-                fontWeight: FontWeight.normal,
-              ),
+              style:AppStyles.textStyle20n
             ),
           ),
           body: cubit.userModel != null
