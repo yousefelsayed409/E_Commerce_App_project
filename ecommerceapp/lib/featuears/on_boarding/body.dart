@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
 import 'package:ecommerceapp/core/helper/Shared/cash_helper.dart';
 import 'package:ecommerceapp/core/widgets/api_constants.dart';
 import 'package:ecommerceapp/featuears/auth/signIn/sign_in_screen.dart';
@@ -106,9 +107,10 @@ class _BodyState extends State<Body> {
 
   void _onContinuePressed() async {
     if (currentPage == splashData.length - 1) {
-      await CacheHelper().saveData(
+      await CashNetwork.insertTocash(
           key: AppConst.onBoardingScreen, value: AppConst.onBoardingScreen);
       Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => const SignInScreen()),
       );
