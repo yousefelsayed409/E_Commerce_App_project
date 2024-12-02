@@ -1,23 +1,18 @@
+import 'package:ecommerceapp/featuears/auth/signIn/manger/cubit/auth_login_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'components/body.dart';
+import 'widget/body.dart';
 
 class SignInScreen extends StatelessWidget {
-
   const SignInScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      //   title: Text(
-      //     "Sign In",
-      //     style: AppStyles.textStyle23,
-      //   ),
-      //   elevation: 0,
-      //   centerTitle: true,
-      // ),
-      body: Body(),
+    return BlocProvider(
+      create: (context) => AuthSignInCubit(),
+      child: const Scaffold(
+        body: Body(),
+      ),
     );
   }
 }

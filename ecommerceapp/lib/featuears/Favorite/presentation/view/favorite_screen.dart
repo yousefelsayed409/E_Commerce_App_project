@@ -1,23 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
+import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swipe_action_cell/flutter_swipe_action_cell.dart';
-
-import '../../core/widgets/empty_screen.dart';
-import '../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
-import '../Layout/Layout_cubit.dart/cubit/layout_state.dart';
-import 'appbar.dart';
+import '../../../../core/widgets/empty_screen.dart';
+import 'widget/appbar.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<LayoutCubit>(context);
-    return BlocConsumer<LayoutCubit, LayoutStates>(
+    final cubit = BlocProvider.of<FavoriteCubit>(context);
+    return BlocConsumer<FavoriteCubit, FavoriteState>(
       listener: (context, state) {
         // TODO: implement listener
       },
@@ -65,12 +63,6 @@ class FavoriteScreen extends StatelessWidget {
                 const Center(child: CupertinoActivityIndicator()),
             errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
-                                    // Image.network(
-                                      
-                                    //   height: 100,
-                                    //   width: 100,
-                                    //   fit: BoxFit.fill,
-                                    // ),
                                     SizedBox(
                                       width: 10.w,
                                     ),

@@ -1,15 +1,14 @@
-import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
 import 'package:ecommerceapp/featuears/cart/widget/pay_pal_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../core/utils/app_styles.dart';
 import '../../../core/widgets/defult_button.dart';
+import '../manger/cart_cubit/cart_cubit.dart';
 import '../pay_mob_view.dart';
 
 class CheckoutCard extends StatefulWidget {
-  CheckoutCard({Key? key}) : super(key: key);
+  const CheckoutCard({super.key});
 
   @override
   State<CheckoutCard> createState() => _CheckoutCardState();
@@ -18,7 +17,7 @@ class CheckoutCard extends StatefulWidget {
 class _CheckoutCardState extends State<CheckoutCard> {
   @override
   Widget build(BuildContext context) {
-    var cubit = BlocProvider.of<LayoutCubit>(context);
+    var cubit = BlocProvider.of<CartCubit>(context);
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),

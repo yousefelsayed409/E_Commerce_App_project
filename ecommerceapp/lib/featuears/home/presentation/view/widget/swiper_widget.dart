@@ -1,13 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:ecommerceapp/featuears/home/presentation/manger/home_cubit/home_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:redacted/redacted.dart';
 
-import '../../../../core/utils/app_color.dart';
-import '../../../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
+import '../../../../../core/utils/app_color.dart';
+import '../../../../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
 
 class SwiperWidget extends StatefulWidget {
   const SwiperWidget({super.key});
@@ -19,7 +20,7 @@ class SwiperWidget extends StatefulWidget {
 class _SwiperWidgetState extends State<SwiperWidget> {
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<LayoutCubit>(context);
+    final cubit = BlocProvider.of<HomeCubit>(context);
 
     return SizedBox(
       height: 150.h,

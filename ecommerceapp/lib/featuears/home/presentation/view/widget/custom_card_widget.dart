@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
+import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/models/product_model.dart';
-import '../../../../core/utils/app_styles.dart';
-import '../../../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
+import '../../../data/models/product_model.dart';
+import '../../../../../core/utils/app_styles.dart';
 
 // ignore: must_be_immutable
 class Customcard extends StatelessWidget {
@@ -19,7 +19,7 @@ class Customcard extends StatelessWidget {
 
   ProductModel model;
   final Function? ontap;
-  final LayoutCubit cubit;
+  final FavoriteCubit  cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -113,11 +113,7 @@ class Customcard extends StatelessWidget {
                 const Center(child: CupertinoActivityIndicator()),
             errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
-          // Image.network(
-          //   model.image!,
-          //   height: 120,
-          //   width: 120,
-          // ),
+          
         )
       ],
     );

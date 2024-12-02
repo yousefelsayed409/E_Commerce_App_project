@@ -1,20 +1,19 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:ecommerceapp/core/utils/app_styles.dart';
+import 'package:ecommerceapp/featuears/cart/manger/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../core/models/product_model.dart';
+import '../home/data/models/product_model.dart';
 import '../../core/utils/app_color.dart';
 import '../../core/widgets/defult_button.dart';
 import '../../core/widgets/snakbar_widget.dart';
-import '../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
-import 'components/Top_rounded_container.dart';
-import 'components/cart_counter.dart';
-import 'components/custom_Appbar.dart';
-import 'components/product_descroption.dart';
-import 'components/product_title_with_image.dart';
+import 'widget/Top_rounded_container.dart';
+import 'widget/cart_counter.dart';
+import 'widget/custom_Appbar.dart';
+import 'widget/product_descroption.dart';
+import 'widget/product_title_with_image.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({
@@ -26,7 +25,7 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<LayoutCubit>(context);
+    final cubit = BlocProvider.of<CartCubit>(context);
 
     return Scaffold(
       // bottomNavigationBar: ,

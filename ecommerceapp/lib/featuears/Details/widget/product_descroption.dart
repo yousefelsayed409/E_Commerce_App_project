@@ -1,20 +1,19 @@
 import 'package:ecommerceapp/core/utils/app_styles.dart';
 import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
+import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../core/models/product_model.dart';
+import '../../home/data/models/product_model.dart';
 import '../../../core/utils/constants.dart';
-import '../../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
-import '../../Layout/Layout_cubit.dart/cubit/layout_state.dart';
+
 
 class ProductDescription extends StatefulWidget {
   const ProductDescription({
-    Key? key,
+    super.key,
     required this.product,
     this.pressOnSeeMore,
-  }) : super(key: key);
+  });
 
   final ProductModel product;
   final GestureTapCallback? pressOnSeeMore;
@@ -28,14 +27,9 @@ class _ProductDescriptionState extends State<ProductDescription> {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<LayoutCubit>(context);
+    final cubit = BlocProvider.of<FavoriteCubit>(context);
 
-    return BlocConsumer<LayoutCubit, LayoutStates>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
-      builder: (context, state) {
-        return Column(
+    return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
@@ -122,7 +116,5 @@ class _ProductDescriptionState extends State<ProductDescription> {
             )
           ],
         );
-      },
-    );
   }
 }

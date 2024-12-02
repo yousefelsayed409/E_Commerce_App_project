@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
+import 'package:ecommerceapp/featuears/cart/manger/cart_cubit/cart_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,8 +9,6 @@ import 'package:flutter_swipe_action_cell/flutter_swipe_action_cell.dart';
 import 'package:redacted/redacted.dart';
 import '../../core/widgets/empty_screen.dart';
 import '../../core/widgets/snakbar_widget.dart';
-import '../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
-import '../Layout/Layout_cubit.dart/cubit/layout_state.dart';
 import 'widget/Cart_Chek_out.dart';
 
 class CartScreen extends StatelessWidget {
@@ -16,9 +16,10 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<LayoutCubit>(context);
+    final cubit = BlocProvider.of<CartCubit>(context);
+    final cubitfavorite = BlocProvider.of<FavoriteCubit>(context);
 
-    return BlocConsumer<LayoutCubit, LayoutStates>(
+    return BlocConsumer<CartCubit, CartState>(
       listener: (context, state) {
         if (state is AddOrRemoveItemFromCartsSuccessState) {
           // Optional: Additional actions
@@ -124,7 +125,7 @@ class CartScreen extends StatelessWidget {
                                             children: [
                                               OutlinedButton(
                                                 onPressed: () {
-                                                  cubit.AddOrRemoveFromFavorites(
+                                                  cubitfavorite.AddOrRemoveFromFavorites(
                                                       productId: cubit
                                                           .carts[index].id
                                                           .toString());
@@ -135,7 +136,7 @@ class CartScreen extends StatelessWidget {
                                                 },
                                                 child: Icon(
                                                   Icons.favorite,
-                                                  color: cubit.FavoriteId.contains(
+                                                  color: cubitfavorite.FavoriteId.contains(
                                                           cubit.carts[index].id
                                                               .toString())
                                                       ? Colors.red

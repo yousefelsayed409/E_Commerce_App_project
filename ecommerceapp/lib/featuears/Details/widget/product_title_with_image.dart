@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/models/product_model.dart';
+import '../../home/data/models/product_model.dart';
 import '../../../core/utils/constants.dart';
 
 class ProductTitleWithImage extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:ecommerceapp/core/utils/app_assets.dart';
 import 'package:ecommerceapp/core/widgets/api_constants.dart';
-import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
+import 'package:ecommerceapp/featuears/cart/manger/cart_cubit/cart_cubit.dart';
 import 'package:ecommerceapp/featuears/cart/widget/cart_info_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +21,7 @@ class PayPalScreen extends StatefulWidget {
 class _PayPalScreenState extends State<PayPalScreen> {
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<LayoutCubit>(context);
+    final cubit = BlocProvider.of<CartCubit>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(

@@ -1,24 +1,25 @@
-import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
-import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_state.dart';
+
+import 'package:ecommerceapp/featuears/home/presentation/manger/home_cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/routes/app_routes.dart';
 import 'Search_foem_field.dart';
 import 'icon_with_counter.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<LayoutCubit>();
+    final cubit = context.read<HomeCubit>();
+        // final cubit = context.read<LayoutCubit>();
+
     return SafeArea(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          BlocBuilder<LayoutCubit, LayoutStates>(
+          BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               return SearchField(
                   onChanged: (value) {

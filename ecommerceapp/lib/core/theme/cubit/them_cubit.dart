@@ -12,14 +12,12 @@ class ThemCubit extends Cubit<ThemState> {
     switch (state) {
       case ThemeEnumState.Initial:
         final theme = CashNetwork.getCashData(key: 'theme');
-        if (theme != null) {
-          if (theme == 'l') {
-            emit(AppLightThem());
-          } else {
-            emit(AppDarkThem());
-          }
+        if (theme == 'l') {
+          emit(AppLightThem());
+        } else {
+          emit(AppDarkThem());
         }
-        break;
+              break;
       case ThemeEnumState.Light:
         CashNetwork.insertTocash(key: 'theme', value: 'l');
         emit(AppLightThem());

@@ -2,8 +2,8 @@ import 'package:ecommerceapp/core/utils/app_assets.dart';
 import 'package:ecommerceapp/core/widgets/api_constants.dart';
 import 'package:ecommerceapp/core/widgets/defult_button.dart';
 import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
-import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
-import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_state.dart';
+
+import 'package:ecommerceapp/featuears/cart/manger/cart_cubit/cart_cubit.dart';
 import 'package:ecommerceapp/featuears/cart/manger/paypal_cubit/cubit.dart';
 import 'package:ecommerceapp/featuears/cart/manger/paypal_cubit/state.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +43,7 @@ class _PayMobScreenState extends State<PayMobScreen> {
         }
       },
       builder: (context, state) {
-        var cuubit = BlocProvider.of<LayoutCubit>(context);
+        var cuubit = BlocProvider.of<CartCubit>(context);
             var cubit = BlocProvider.of<PaymentCubit>(context);
     
             return Scaffold(
