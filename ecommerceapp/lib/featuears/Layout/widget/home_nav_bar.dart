@@ -2,7 +2,7 @@ import 'package:circle_nav_bar/circle_nav_bar.dart';
 import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:ecommerceapp/featuears/Favorite/favorite_screen.dart';
 import 'package:ecommerceapp/featuears/cart/Cart_screen.dart';
-import 'package:ecommerceapp/featuears/profile/profile_screen.dart';
+import 'package:ecommerceapp/featuears/profile/presentation/view/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:ecommerceapp/featuears/home/screen/Home_screen.dart';

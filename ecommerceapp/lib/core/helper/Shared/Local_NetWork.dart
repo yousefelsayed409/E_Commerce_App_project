@@ -2,6 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class CashNetwork {
   static late SharedPreferences sharedoref;
+  // ignore: non_constant_identifier_names
   static Future CashInitialization() async {
     sharedoref = await SharedPreferences.getInstance();
   }

@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/core/utils/app_color.dart';
-import 'package:ecommerceapp/featuears/profile/components/body.dart';
+import 'package:ecommerceapp/featuears/profile/presentation/view/widget/body.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -7,6 +7,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     final theme = Theme.of(context);
 
     return Scaffold(

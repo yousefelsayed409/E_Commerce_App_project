@@ -1,5 +1,5 @@
-import 'package:ecommerceapp/featuears/profile/components/show_dialog_widget.dart';
-import 'package:ecommerceapp/featuears/profile/setting_view.dart';
+import 'package:ecommerceapp/featuears/profile/presentation/view/widget/show_dialog_widget.dart';
+import 'package:ecommerceapp/featuears/profile/presentation/view/setting_view.dart';
 import 'package:flutter/material.dart';
 
 import '../my_account_screen.dart';

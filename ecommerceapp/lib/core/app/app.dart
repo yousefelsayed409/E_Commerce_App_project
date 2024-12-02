@@ -4,6 +4,7 @@ import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cub
 import 'package:ecommerceapp/featuears/auth/signIn/manger/cubit/auth_login_cubit.dart';
 import 'package:ecommerceapp/featuears/auth/signUp/manger/manger/auth_cubit.dart';
 import 'package:ecommerceapp/featuears/cart/manger/paypal_cubit/cubit.dart';
+import 'package:ecommerceapp/featuears/profile/presentation/manger/profile_cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,6 +22,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AuthSignUpCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ProfileCubit()..getUserData(),
         ),
         BlocProvider(
           create: (context) => PaymentCubit()..getAuthToken(),
@@ -53,6 +57,7 @@ class App extends StatelessWidget {
               return MaterialApp(
                 theme: theme,
                 debugShowCheckedModeBanner: false,
+                themeMode: ThemeMode.light,
                 initialRoute: AppRoute.splashScreen,
                 onGenerateRoute: AppRoute.generateRoute,
               );

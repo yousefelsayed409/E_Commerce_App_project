@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../../../../../core/helper/Shared/Local_NetWork.dart';
-import '../../../../../core/models/User_Models.dart';
+import '../../../../profile/data/model/User_Models.dart';
 import '../../../../../core/utils/constants.dart';
 part 'auth_login_state.dart';
 
@@ -17,7 +17,7 @@ class AuthSignInCubit extends Cubit<AuthLoginState> {
  //Sign in Form key
   GlobalKey<FormState> signInFormKey = GlobalKey();
  
-  void Login() async {
+  void login() async {
     emit(AuthLoginLoadingState());
     try {
       http.Response response = await http.post(
@@ -34,6 +34,7 @@ class AuthSignInCubit extends Cubit<AuthLoginState> {
           currenpassword = CashNetwork.getCashData(key: 'password');
 
           debugPrint('Token: $token');
+          
           emit(AuthLoginSuccessState());
           
         } else {

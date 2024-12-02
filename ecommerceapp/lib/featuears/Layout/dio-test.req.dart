@@ -17,7 +17,6 @@
 
 //   UserModel? userModel;
 
-//   // دالة للحصول على بيانات المستخدم
 //   Future<void> getUserData() async {
 //     emit(GetUserDataLoadingState());
 //     try {
@@ -47,7 +46,6 @@
 //     }
 //   }
 
-//   // دالة للحصول على بيانات البانرات
 //   void getBannersData() async {
 //     try {
 //       Response response = await dio.get("https://student.valuxapps.com/api/banners");
@@ -70,7 +68,6 @@
 //     }
 //   }
 
-//   // دالة للحصول على بيانات الفئات
 //   void getCategoriesData() async {
 //     try {
 //       Response response = await dio.get(
@@ -96,7 +93,6 @@
 //     }
 //   }
 
-//   // دالة للحصول على المنتجات
 //   void getProducts() async {
 //     try {
 //       Response response = await dio.get(
@@ -122,7 +118,6 @@
 //     }
 //   }
 
-//   // دالة لتصفية المنتجات
 //   void filterProducts({required String input}) {
 //     filteredProducts = products
 //         .where((element) =>
@@ -131,7 +126,6 @@
 //     emit(FilterProductsSuccessState());
 //   }
 
-//   // دالة للحصول على المفضلة
 //   Future<void> getfavorite() async {
 //     favorites.clear();
 //     try {
@@ -161,7 +155,6 @@
 //     }
 //   }
 
-//   // دالة لإضافة أو إزالة منتج من المفضلة
 //   void AddOrRemoveFromFavorites({required String productId}) async {
 //     try {
 //       Response response = await dio.post(
@@ -191,7 +184,6 @@
 //     }
 //   }
 
-//   // دالة للحصول على سلة المشتريات
 //   Future<void> getCarts() async {
 //     carts.clear();
 //     CartsId.clear();
@@ -221,7 +213,6 @@
 //     }
 //   }
 
-//   // دالة لإضافة أو إزالة منتج من سلة المشتريات
 //   Future<bool> addOrRemoveFromCart({required String id}) async {
 //     try {
 //       Response response = await dio.post(
@@ -255,7 +246,6 @@
 //     }
 //   }
 
-//   // دالة لتغيير كلمة المرور
 //   void changePassword(
 //       {required String userCurrentPassword,
 //       required String newPassword}) async {
@@ -292,7 +282,6 @@
 //     }
 //   }
 
-//   // دالة للتسجيل
 //   Future<void> signUp({
 //     required String name,
 //     required String email,
@@ -329,7 +318,6 @@
 //     }
 //   }
 
-//   // دالة لتسجيل الدخول
 //   Future<void> signIn({
 //     required String email,
 //     required String password,
@@ -362,7 +350,6 @@
 //     }
 //   }
 
-//   // دالة للتعامل مع أخطاء Dio
 //   void handleDioExceptions(DioException e) {
 //     if (e.response != null) {
 //       print('Dio error: ${e.response?.data}');

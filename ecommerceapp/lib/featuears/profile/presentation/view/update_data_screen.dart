@@ -1,13 +1,11 @@
 import 'package:ecommerceapp/core/utils/app_color.dart';
-import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_state.dart';
+import 'package:ecommerceapp/featuears/profile/presentation/manger/profile_cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../core/widgets/custom_form_field.dart';
-import '../../core/widgets/defult_button.dart';
-import '../../core/widgets/snakbar_widget.dart';
-import '../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
+import '../../../../core/widgets/custom_form_field.dart';
+import '../../../../core/widgets/defult_button.dart';
+import '../../../../core/widgets/snakbar_widget.dart';
 
 // ignore: must_be_immutable
 class UpdateDataScreen extends StatelessWidget {
@@ -19,7 +17,7 @@ class UpdateDataScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<LayoutCubit>(context);
+    final cubit = BlocProvider.of<ProfileCubit>(context);
     namecontrollar.text = cubit.userModel!.name!;
     emailcontrollar.text = cubit.userModel!.email!;
     phonecontrollar.text = cubit.userModel!.phone!;
@@ -55,7 +53,7 @@ class UpdateDataScreen extends StatelessWidget {
             SizedBox(
               height: 15.h,
             ),
-            BlocConsumer<LayoutCubit, LayoutStates>(
+            BlocConsumer<ProfileCubit, ProfileState>(
               listener: (context, state) {
                 // TODO: implement listener
                 if (state is UpdateUserDataSuccessState) {

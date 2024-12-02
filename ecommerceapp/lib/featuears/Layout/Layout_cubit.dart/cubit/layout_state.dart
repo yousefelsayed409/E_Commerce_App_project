@@ -6,14 +6,6 @@ class LayoutInitialState extends LayoutStates {}
 
 class ChangeBottomNavIndexState extends LayoutStates {}
 
-class GetUserDataSuccessState extends LayoutStates {}
-
-class GetUserDataLoadingState extends LayoutStates {}
-
-class FailedToGetUserDataState extends LayoutStates {
-  String error;
-  FailedToGetUserDataState({required this.error});
-}
 
 class GetFavoritesSuccessState extends LayoutStates {}
 
@@ -49,33 +41,3 @@ class FailedToGetCartsState extends LayoutStates {}
 
 class GetToTalPricesSuccessState extends LayoutStates {}
 
-class ChangePasswordLoadingState extends LayoutStates {}
-
-class ChangePasswordSuccessState extends LayoutStates {}
-
-class ChangePasswordWithFailureState extends LayoutStates {
-  String error;
-
-  ChangePasswordWithFailureState(this.error);
-}
-
-class UpdateUserDataLoadingState extends LayoutStates {}
-
-class UpdateUserDataSuccessState extends LayoutStates {}
-
-class UpdateUserDataWithFailureState extends LayoutStates {
-  String error;
-
-  UpdateUserDataWithFailureState(this.error);
-}
-
-class LogOutLoadingState extends LayoutStates {}
-
-class LogOutSuccessState extends LayoutStates {}
-
-class LogOutFailureState extends LayoutStates {
-  final String errorMessage;
-  LogOutFailureState({
-    required this.errorMessage,
-  });
-}

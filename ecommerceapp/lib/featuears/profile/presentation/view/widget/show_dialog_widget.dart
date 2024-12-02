@@ -2,9 +2,8 @@ import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:ecommerceapp/core/utils/app_styles.dart';
 import 'package:ecommerceapp/core/widgets/custom_nav.dart';
 import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
-import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
-import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_state.dart';
 import 'package:ecommerceapp/featuears/auth/signIn/sign_in_screen.dart';
+import 'package:ecommerceapp/featuears/profile/presentation/manger/profile_cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,7 +12,7 @@ class ShowDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = context.read<LayoutCubit>();
+    var cubit = context.read<ProfileCubit>();
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -55,7 +54,7 @@ class ShowDialogWidget extends StatelessWidget {
               ),
             ), 
             const Spacer(),
-            BlocConsumer<LayoutCubit, LayoutStates>(
+            BlocConsumer<ProfileCubit, ProfileState>(
               listener: (context, state) {
                 if (state is LogOutSuccessState) {
                   showsnakbarwidget(context, 'LogOut Successfully', true);

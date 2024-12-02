@@ -1,6 +1,5 @@
 import 'package:ecommerceapp/core/theme/cubit/them_cubit.dart';
 import 'package:ecommerceapp/core/theme/enums/them_enum.dart';
-import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,15 +22,16 @@ class _DarkAndLightViewState extends State<DarkAndLightView> {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: isDarkMode ? Colors.white : Colors.white, 
+            color: isDarkMode ? Colors.white : Colors.black,
           ),
         ),
-        backgroundColor: isDarkMode ? Colors.black : AppColors.Teal,   
+        backgroundColor: isDarkMode ? Colors.black : Colors.white, 
         centerTitle: true,
       ),
       body: BlocBuilder<ThemCubit, ThemState>(
         builder: (context, state) {
           isDarkMode = state is AppDarkThem; 
+
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

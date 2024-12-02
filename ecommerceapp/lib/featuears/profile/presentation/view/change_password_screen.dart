@@ -1,16 +1,12 @@
 import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-
-import '../../core/utils/constants.dart';
-import '../../core/widgets/custom_form_field.dart';
-import '../../core/widgets/defult_button.dart';
-import '../../core/widgets/snakbar_widget.dart';
-import '../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
-import '../Layout/Layout_cubit.dart/cubit/layout_state.dart';
+import '../../../../core/utils/constants.dart';
+import '../../../../core/widgets/custom_form_field.dart';
+import '../../../../core/widgets/defult_button.dart';
+import '../../../../core/widgets/snakbar_widget.dart';
+import '../manger/profile_cubit/profile_cubit.dart';
 
 // ignore: must_be_immutable
 class ChangePasswordScreen extends StatelessWidget {
@@ -21,7 +17,7 @@ class ChangePasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<LayoutCubit>(context);
+    final cubit = BlocProvider.of<ProfileCubit>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -51,7 +47,7 @@ class ChangePasswordScreen extends StatelessWidget {
               height: 15.h,
             ), 
             
-            BlocConsumer<LayoutCubit, LayoutStates>(
+            BlocConsumer<ProfileCubit, ProfileState>(
               listener: (context, state) {
                 if (state is ChangePasswordSuccessState) {
                   showsnakbarwidget(

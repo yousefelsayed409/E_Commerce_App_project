@@ -2,6 +2,7 @@ import 'package:ecommerceapp/core/widgets/custom_loading_indicator.dart';
 import 'package:ecommerceapp/core/widgets/defult_button.dart';
 import 'package:ecommerceapp/core/widgets/keyboar_Util.dart';
 import 'package:ecommerceapp/featuears/Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
+import 'package:ecommerceapp/featuears/profile/presentation/manger/profile_cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +23,10 @@ class Body extends StatelessWidget {
       listener: (context, state) {
         // TODO: implement listener
         if (state is AuthLoginSuccessState) {
-          context.read<LayoutCubit>().getUserData();
+           context.read<ProfileCubit>().getUserData();
+          context.read<LayoutCubit>().getCarts();
+          context.read<LayoutCubit>().getfavorite();
+         
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -68,7 +72,7 @@ class Body extends StatelessWidget {
                           if (cubit.signInFormKey.currentState!.validate() == true) {
                             // _formKey.currentState!.save();
                             KeyboardUtil.hideKeyboard(context);
-                            BlocProvider.of<AuthSignInCubit>(context).Login();
+                            BlocProvider.of<AuthSignInCubit>(context).login();
                             // if all are valid then go to success screen
 
                             // Navigator.pushNamed(context, AppRoute.homescreen);

@@ -1,12 +1,11 @@
 import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:ecommerceapp/core/utils/app_styles.dart';
-import 'package:ecommerceapp/featuears/profile/update_data_screen.dart';
+import 'package:ecommerceapp/featuears/profile/presentation/manger/profile_cubit/profile_cubit.dart';
+import 'package:ecommerceapp/featuears/profile/presentation/view/update_data_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../core/widgets/defult_button.dart';
-import '../Layout/Layout_cubit.dart/cubit/layout_cubit.dart';
-import '../Layout/Layout_cubit.dart/cubit/layout_state.dart';
+import '../../../../core/widgets/defult_button.dart';
 import 'change_password_screen.dart';
 
 class MyAccountScreen extends StatelessWidget {
@@ -14,12 +13,12 @@ class MyAccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LayoutCubit, LayoutStates>(
+    return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {
         // TODO: implement listener
       },
       builder: (context, state) {
-        final cubit = BlocProvider.of<LayoutCubit>(context);
+        final cubit = BlocProvider.of<ProfileCubit>(context);
         final theme = Theme.of(context);    
         
         if (cubit.userModel == null) cubit.getUserData();
