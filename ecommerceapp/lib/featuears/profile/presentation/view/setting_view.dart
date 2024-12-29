@@ -1,4 +1,6 @@
 import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/localization/bloc/app_language_bloc.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/theme/bloc/app_theme_bloc.dart';
 import 'package:ecommerceapp/core/theme/cubit/them_cubit.dart';
 import 'package:ecommerceapp/core/theme/enums/them_enum.dart';
@@ -21,7 +23,7 @@ class _DarkAndLightViewState extends State<DarkAndLightView> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'اختيار الثيم',
+            'choese theme'.tr(context),
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -51,8 +53,8 @@ class _DarkAndLightViewState extends State<DarkAndLightView> {
             const SizedBox(height: 20),
             Text(
               CashNetwork.getCashData(key: 'theme') == 'light'
-                  ? 'الوضع الفاتح'
-                  : 'الوضع الداكن',
+                  ? ' light Theme'.tr(context)
+                  : ' Dark Theme'.tr(context),
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -63,24 +65,29 @@ class _DarkAndLightViewState extends State<DarkAndLightView> {
             ),
             const SizedBox(height: 20),
 
-            //   ElevatedButton(
-            //   onPressed: () {
-            //    BlocProvider.of<AppThemeBloc>(context)
-            //         .add(LightThemeEvent());
-            //   },
-            //   child:  Text(' light theme' ,
-            //     style: TextStyle(color: CashNetwork.getCashData(key: 'theme') == 'light' ? Colors.black : Colors.white),
-            //   ),
-            // ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     BlocProvider.of<AppThemeBloc>(context)
-            //         .add(DarkThemeEvent());
-            //   },
-            //   child:  Text(' dark theme' ,
-            //     style: TextStyle(color: CashNetwork.getCashData(key: 'theme') == 'light' ? Colors.black : Colors.white),
-            //   ),
-            // ),
+           ElevatedButton(
+              onPressed: () {
+                BlocProvider.of<AppLanguageBloc>(context)
+                    .add(ArabicLanguageEvent());
+              },
+              child: Text(
+                  AppLocalizations.of(context)?.translate('arabic_button') ??
+                      'اللغة العربية' , 
+                      style: TextStyle(color: CashNetwork.getCashData(key: 'theme') == 'light' ? Colors.black : Colors.white),
+                      ),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                BlocProvider.of<AppLanguageBloc>(context)
+                    .add(EnglishLanguageEvent());
+              },
+              child: Text(
+                  AppLocalizations.of(context)?.translate('english_button') ??
+                      'English' , 
+                      style: TextStyle(color: CashNetwork.getCashData(key: 'theme') == 'light' ? Colors.black : Colors.white),
+                      ),
+            ),
             SwitchListTile(
               value: isDarkMode,
               onChanged: (value) {

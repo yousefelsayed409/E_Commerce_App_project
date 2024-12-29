@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/featuears/cart/widget/pay_pal_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,7 +52,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
               children: [
                 Text.rich(
                   TextSpan(
-                    text: "Total:\n",
+                    text: "Total:\n".tr(context),
                     style: TextStyle(
                                             color:  CashNetwork.getCashData(key: 'theme') == 'light'
                                 ? Colors.black
@@ -71,9 +72,9 @@ class _CheckoutCardState extends State<CheckoutCard> {
                   ),
                 ),
                 SizedBox(
-                  width: 220,
+                  width: 180,
                   child: DefaultButton(
-                    text: "Check Out",
+                    text: "Check Out".tr(context),
                     press: () {
                       _showPaymentOptions(context ,);
                     },

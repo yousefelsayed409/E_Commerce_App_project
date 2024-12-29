@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/widgets/api_constants.dart';
 import 'package:ecommerceapp/featuears/auth/signIn/sign_in_screen.dart';
 import 'package:ecommerceapp/featuears/on_boarding/onBoarding_contennt.dart';
@@ -21,15 +22,15 @@ class _BodyState extends State<Body> {
 
   final List<Map<String, String>> splashData = [
     {
-      "text": "Welcome , Let’s go shopping!",
+      "text_msgOnboarding": "Welcome , Let’s go shopping!",
       "image": "assets/images/Online Groceries-cuate (1).png"
     },
     {
-      "text": "We help people connect with store \naround Egypt",
+      "text_msgOnboarding": "We help people connect with store \naround Egypt",
       "image": "assets/images/Add to Cart-rafiki.png"
     },
     {
-      "text": "We show the easy way to shop. \nJust stay at home with us",
+      "text_msgOnboarding": "We show the easy way to shop. \nJust stay at home with us",
       "image": "assets/images/Add to Cart-bro.png"
     },
   ];
@@ -53,7 +54,7 @@ class _BodyState extends State<Body> {
                 itemCount: splashData.length,
                 itemBuilder: (context, index) => onBoardingContent(
                   image: splashData[index]["image"],
-                  text: splashData[index]['text'],
+                  text: splashData[index]['text_msgOnboarding']!.tr(context),
                 ),
               ),
             ),
@@ -68,8 +69,8 @@ class _BodyState extends State<Body> {
                     const Spacer(flex: 3),
                     DefaultButton(
                       text: currentPage == splashData.length - 1
-                          ? "Get Started"
-                          : "Next",
+                          ? "Get Started".tr(context)
+                          : "Next".tr(context),
                       press: _onContinuePressed,
                     ),
                     const Spacer(),

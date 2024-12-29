@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/theme/cubit/them_cubit.dart';
 import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
@@ -33,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor:  
                AppColors.Teal,
         title:  Text(
-          "Profile",
+          "Profile".tr(context),
          style: TextStyle(
           color: CashNetwork.getCashData(key: 'theme') == 'light'
               ? AppColors.white

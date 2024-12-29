@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/featuears/profile/presentation/view/widget/show_dialog_widget.dart';
 import 'package:ecommerceapp/featuears/profile/presentation/view/setting_view.dart';
 import 'package:flutter/material.dart';
@@ -21,21 +22,21 @@ class Bodyprofile extends StatelessWidget {
           // const ProfilePic(),
           const SizedBox(height: 20),
           ProfileMenu(
-            text: "My Account",
+            text: "My Account".tr(context),
             asetsimage: Icons.account_circle,
             press: () => {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return  MyAccountScreen();
+                return  const MyAccountScreen();
               }))
             },
           ),
           ProfileMenu(
-            text: "Notifications",
+            text: "Notifications".tr(context),
             asetsimage: Icons.notifications,
             press: () {},
           ),
           ProfileMenu(
-            text: "Settings",
+            text: "Settings".tr(context),
             asetsimage: Icons.settings,
             press: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -44,12 +45,12 @@ class Bodyprofile extends StatelessWidget {
             },
           ),
           ProfileMenu(
-            text: "Help Center",
+            text: "Help Center".tr(context),
             asetsimage: Icons.help,
             press: () {},
           ),
           ProfileMenu(
-            text: "Log Out",
+            text: "Log Out".tr(context),
             asetsimage: Icons.exit_to_app,
             press: () {
               showDialog(
@@ -64,7 +65,7 @@ class Bodyprofile extends StatelessWidget {
                                 ? Colors.white
                                 : Colors.white,
                                           
-                      content:  ShowDialogWidget(),
+                      content:  const ShowDialogWidget(),
                     );
                   },
                 );

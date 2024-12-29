@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:ecommerceapp/core/utils/app_styles.dart';
 import 'package:ecommerceapp/featuears/profile/presentation/manger/profile_cubit/profile_cubit.dart';
@@ -28,7 +29,7 @@ class MyAccountScreen extends StatelessWidget {
             centerTitle: true,
             backgroundColor:  AppColors.Teal, 
             title: Text(
-              "My Account",
+              "My Account".tr(context),
               style: TextStyle(
                 fontSize: 18,
                                             color:  CashNetwork.getCashData(key: 'theme') == 'light'
@@ -66,7 +67,7 @@ class MyAccountScreen extends StatelessWidget {
 // ),
                         const SizedBox(height: 30),
                         DefaultButton(
-                          text: "Change Password",
+                          text: "Change Password".tr(context),
                           press: () {
                             Navigator.push(
                               context,
@@ -77,7 +78,7 @@ class MyAccountScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 15),
                         DefaultButton(
-                          text: "Update Data",
+                          text: "Update Data".tr(context),
                           press: () {
                             Navigator.push(
                               context,

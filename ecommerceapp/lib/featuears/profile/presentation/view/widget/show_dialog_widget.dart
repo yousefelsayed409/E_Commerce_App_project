@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:ecommerceapp/core/utils/app_styles.dart';
 import 'package:ecommerceapp/core/widgets/custom_nav.dart';
@@ -18,7 +19,7 @@ class ShowDialogWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'Logout',
+          'Logout'.tr(context),
            style: TextStyle(
             fontSize: 20,
                                             color:  CashNetwork.getCashData(key: 'theme') == 'light'
@@ -31,7 +32,7 @@ class ShowDialogWidget extends StatelessWidget {
           height: 15,
         ),
          Text(
-          'Are sou sure you want  to log in ?',
+          'Are sou sure you want  to log in ?'.tr(context),
           textAlign: TextAlign.center,
            style: TextStyle(
                                             color:  CashNetwork.getCashData(key: 'theme') == 'light'
@@ -58,7 +59,7 @@ class ShowDialogWidget extends StatelessWidget {
                  CustomNavigation.navigateBack(context);
                 },
                 child: Text(
-                  'Cancel',
+                  'Cancel'.tr(context),
                   style: AppStyles.textStyle16.copyWith(color: AppColors.black),
 
                 ),
@@ -80,7 +81,7 @@ class ShowDialogWidget extends StatelessWidget {
                   child: OutlinedButton(
                     // ignore: sort_child_properties_last
                     child: Text(
-                      'Logout',
+                      'Logout'.tr(context),
                       style:
 AppStyles.textStyle16.copyWith(color: AppColors.red),
                     ),

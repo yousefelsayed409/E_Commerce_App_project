@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:ecommerceapp/featuears/profile/presentation/manger/profile_cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class UpdateDataScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.teal,
-        title: const Text("UpDate Profile" ,style: TextStyle(color: AppColors.white),),
+        title:  Text("UpDate Profile".tr(context) ,style: TextStyle(color: AppColors.white),),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 50.0, left: 32, right: 32.0),
@@ -34,22 +35,22 @@ class UpdateDataScreen extends StatelessWidget {
           children: [
             buildFormField(
                 controller: namecontrollar,
-                label: 'name',
-                hitt: 'Enter Your Name'),
+                label: 'name'.tr(context),
+                hitt: 'Enter Your Name'.tr(context)),
             SizedBox(
               height: 15.h,
             ),
             buildFormField(
                 controller: emailcontrollar,
-                label: 'Email',
-                hitt: 'Enter Your Email '),
+                label: 'Email'.tr(context),
+                hitt: 'Enter Your Email '.tr(context)),
             SizedBox(
               height: 15.h,
             ),
             buildFormField(
                 controller: phonecontrollar,
-                label: 'Phone',
-                hitt: 'Enter Youe Phone'),
+                label: 'Phone'.tr(context),
+                hitt: 'Enter Youe Phone'.tr(context)),
             SizedBox(
               height: 15.h,
             ),
@@ -67,8 +68,8 @@ class UpdateDataScreen extends StatelessWidget {
               builder: (context, state) {
                 return DefaultButton(
                   text: state is UpdateUserDataLoadingState
-                      ? 'Loading...'
-                      : 'Update',
+                      ? 'Loading...'.tr(context)
+                      : 'Update'.tr(context),
                   press: () {
                     if (namecontrollar.text.isNotEmpty &&
                         emailcontrollar.text.isNotEmpty &&

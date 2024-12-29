@@ -29,58 +29,85 @@ class _HomeNavBarWidget3State extends State<HomeNavBarWidget3>
     pageController = PageController(initialPage: _tabIndex);
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      bottomNavigationBar: CircleNavBar(
-       circleShadowColor: AppColors.Teal,
-        activeIcons: const [
-          Icon(LineIcons.home, color: AppColors.Teal),
-          Icon(LineIcons.heart, color: AppColors.Teal),
-          Icon(LineIcons.shoppingBag, color: AppColors.Teal),
-          Icon(LineIcons.user, color: AppColors.Teal),
-        ],
-        inactiveIcons: const [
-          Icon(LineIcons.home, color: Colors.grey),
-          Icon(LineIcons.heart, color: Colors.grey),
-          Icon(LineIcons.shoppingBag, color: Colors.grey),
-          Icon(LineIcons.user, color: Colors.grey),
-        ],
-        color: Colors.white,
-        height: 50,
-        circleWidth: 50,
-        activeIndex: _tabIndex,
-        onTap: (index) {
-          setState(() {
-            _tabIndex = index;
-            pageController.jumpToPage(index);
-          });
-        },
-        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 20),
-        cornerRadius: const BorderRadius.only(
-          topLeft: Radius.circular(8),
-          topRight: Radius.circular(8),
-          bottomRight: Radius.circular(24),
-          bottomLeft: Radius.circular(24),
-        ),
-        shadowColor: AppColors.Teal,
-        elevation: 10,
+
+@override
+Widget build(BuildContext context) {
+  bool isRTL = Directionality.of(context) == TextDirection.rtl;
+  bool isLTr = Directionality.of(context) == TextDirection.ltr;
+
+
+  return Scaffold(
+    extendBody: true,
+    bottomNavigationBar: CircleNavBar(
+      circleShadowColor: AppColors.Teal,
+      activeIcons: isRTL
+          ? const [
+              Icon(LineIcons.user, color: AppColors.Teal),
+              Icon(LineIcons.shoppingBag, color: AppColors.Teal),
+              Icon(LineIcons.heart, color: AppColors.Teal),
+              Icon(LineIcons.home, color: AppColors.Teal),
+            ]
+          : const [
+              Icon(LineIcons.home, color: AppColors.Teal),
+              Icon(LineIcons.heart, color: AppColors.Teal),
+              Icon(LineIcons.shoppingBag, color: AppColors.Teal),
+              Icon(LineIcons.user, color: AppColors.Teal),
+            ],
+      inactiveIcons: isLTr
+          ? const [
+              Icon(LineIcons.user, color: Colors.grey),
+              Icon(LineIcons.shoppingBag, color: Colors.grey),
+              Icon(LineIcons.heart, color: Colors.grey),
+              Icon(LineIcons.home, color: Colors.grey),
+            ]
+          : const [
+              Icon(LineIcons.home, color: Colors.grey),
+              Icon(LineIcons.heart, color: Colors.grey),
+              Icon(LineIcons.shoppingBag, color: Colors.grey),
+              Icon(LineIcons.user, color: Colors.grey),
+            ],
+      color: Colors.white,
+      height: 50,
+      circleWidth: 50,
+      activeIndex: _tabIndex,
+      onTap: (index) {
+        setState(() {
+          _tabIndex = index;
+          pageController.jumpToPage(isRTL ? 3 - index : index); 
+          
+        });
+      },
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 20),
+      cornerRadius: const BorderRadius.only(
+        topLeft: Radius.circular(8),
+        topRight: Radius.circular(8),
+        bottomRight: Radius.circular(24),
+        bottomLeft: Radius.circular(24),
       ),
-      body: PageView(
-        controller: pageController,
-        onPageChanged: (index) {
-          setState(() {
-            _tabIndex = index;
-          });
-        },
-        children: const [
-          HomeBody(),
-          FavoriteScreen(),
-          CartScreen(),
-          ProfileScreen(),
-        ],
-      ),
-    );
-  }
+      shadowColor: AppColors.Teal,
+      elevation: 10,
+    ),
+    body: PageView(
+      controller: pageController,
+      onPageChanged: (index) {
+        setState(() {
+          _tabIndex = index;
+        });
+      },
+      children: isRTL
+          ? const [
+              ProfileScreen(),
+              CartScreen(),
+              FavoriteScreen(),
+              HomeBody(),
+            ]
+          : const [
+              HomeBody(),
+              FavoriteScreen(),
+              CartScreen(),
+              ProfileScreen(),
+            ],
+    ),
+  );
 }
+    }

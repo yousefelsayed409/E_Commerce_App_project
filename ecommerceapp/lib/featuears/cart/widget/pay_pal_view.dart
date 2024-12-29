@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/utils/app_assets.dart';
 import 'package:ecommerceapp/core/widgets/api_constants.dart';
 import 'package:ecommerceapp/featuears/cart/manger/cart_cubit/cart_cubit.dart';
@@ -26,7 +27,7 @@ class _PayPalScreenState extends State<PayPalScreen> {
     return Scaffold(
       appBar: AppBar(
         title:  Text(
-          "PayPal Checkout",
+          "PayPal Checkout".tr(context),
  style: TextStyle(
   fontSize: 20.sp,
                                             color:  CashNetwork.getCashData(key: 'theme') == 'light'
@@ -50,23 +51,23 @@ class _PayPalScreenState extends State<PayPalScreen> {
               SizedBox(height: 25.h),
               
               OrderInfoItem(
-                title: 'Price Order',
+                title: 'Price Order'.tr(context),
                  value: '${cubit.totalPrice} \$',
               ),
               SizedBox(height: 3.h),
-              const OrderInfoItem(title: 'Discount', value: r'0$'),
+               OrderInfoItem(title: 'Discount'.tr(context), value: r'0$'),
               Divider(
                 thickness: 2,
                 height: 34.h,
                 color: const Color(0xffC7C7C7),
               ),
               OrderInfoItem(
-                title: 'Total Price',
+                title: 'Total Price'.tr(context),
                 value: '${cubit.totalPrice} \$',
               ),
               SizedBox(height: 16.h),
               DefaultButton(
-                text: 'Pay Now',
+                text: 'Pay Now'.tr(context),
                 press: () async {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (BuildContext context) => PaypalCheckout(

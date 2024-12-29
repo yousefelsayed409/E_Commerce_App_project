@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/theme/bloc/app_theme_bloc.dart';
 import 'package:ecommerceapp/core/widgets/custom_nav.dart';
 import 'package:ecommerceapp/featuears/categore/category_screen.dart';
@@ -55,8 +56,8 @@ class _HomeBodyState extends State<HomeBody> {
               const HomeHeader(),
               const SizedBox(height: 15),
               HeaderSection(
-                textone: "Special for you",
-                textTow: "See More",
+                textone: "Special for you".tr(context),
+                textTow: "See More".tr(context),
               ),
               SizedBox(height: 15.h),
               cubit.banners.isEmpty
@@ -70,15 +71,15 @@ class _HomeBodyState extends State<HomeBody> {
                     const CategoryScreen(),
                   );
                 },
-                textone: "Categories",
-                textTow: "See More",
+                textone: "Categories".tr(context),
+                textTow: "See More".tr(context),
               ),
               SizedBox(height: 15.h),
               cubit.categories.isEmpty
                   ? const Center(child: CupertinoActivityIndicator())
                   : _buildCategoriesList(cubit),
               SizedBox(height: 15.h),
-              HeaderSection(textone: "Products", textTow: "See More"),
+              HeaderSection(textone: "Products".tr(context), textTow: "See More".tr(context)),
               SizedBox(height: 40.h),
               cubit.products.isEmpty
                   ? const Center(child: CupertinoActivityIndicator())

@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/utils/app_assets.dart';
 import 'package:ecommerceapp/core/widgets/api_constants.dart';
 import 'package:ecommerceapp/core/widgets/defult_button.dart';
@@ -50,7 +51,7 @@ class _PayMobScreenState extends State<PayMobScreen> {
             return Scaffold(
               appBar: AppBar(
                 title:  Text(
-          "PayMob Checkout",
+          "PayMob Checkout".tr(context),
            style: TextStyle(
             fontSize: 20.sp,
                                             color:  CashNetwork.getCashData(key: 'theme') == 'light'
@@ -76,24 +77,24 @@ class _PayMobScreenState extends State<PayMobScreen> {
                       SizedBox(height: 25.h),
                       
                       OrderInfoItem(
-                        title: 'Price Order ',
+                        title: 'Price Order'.tr(context),
                         value: '${cuubit.totalPrice} \$',
                       ),
                       SizedBox(height: 3.h),
-                      const OrderInfoItem(title: 'Discount', value: r'0$'),
+                       OrderInfoItem(title: 'Discount'.tr(context), value: r'0$'),
                       Divider(
                         thickness: 2,
                         height: 34.h,
                         color: const Color(0xffC7C7C7),
                       ),
                       OrderInfoItem(
-                        title: 'Total Price',
+                        title: 'Total Price'.tr(context),
                         value: '${cuubit.totalPrice} \$',
                       ),
                       SizedBox(height: 16.h),
                       DefaultButton(
                         
-                        text: state is PaymentOrderIdLoadingStates ? 'Processing...' : 'Pay Now',
+                        text: state is PaymentOrderIdLoadingStates ? 'Processing...'.tr(context) : 'Pay Now'.tr(context),
                         press: state is PaymentOrderIdLoadingStates ? null : () async {
                           // Make sure the token is obtained before proceeding
                           // ignore: unnecessary_null_comparison

@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
-import 'package:ecommerceapp/core/theme/bloc/app_theme_bloc.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/utils/app_styles.dart';
 import 'package:ecommerceapp/featuears/cart/manger/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +38,6 @@ class DetailsScreen extends StatelessWidget {
       body: ListView( 
 
         children: [ 
-          
           productimage(ppprouduct: ppprouduct),
           TopRoundedContainer(
             color: AppColors.white,
@@ -63,7 +62,7 @@ class DetailsScreen extends StatelessWidget {
                                   text: TextSpan(
                                     children: [
                                        TextSpan(
-                                          text: "Price \n",
+                                          text: "Price \n".tr(context),
                                           style: TextStyle(
                                             color:  CashNetwork.getCashData(key: 'theme') == 'light'
                                 ? Colors.black
@@ -102,7 +101,7 @@ class DetailsScreen extends StatelessWidget {
                             top: (15),
                           ),
                           child: DefaultButton(
-                            text: "Add To Cart",
+                            text: "Add To Cart".tr(context),
                             press: () {
                               cubit.addOrRemoveFromCart(
                                   id: ppprouduct.id.toString());

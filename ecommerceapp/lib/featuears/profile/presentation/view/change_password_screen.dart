@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +24,7 @@ class ChangePasswordScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.teal,
-        title: const Text("change passwword", style: TextStyle(color: AppColors.white),),
+        title:  Text("Change Password".tr(context), style: TextStyle(color: AppColors.white),),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 50.0, left: 32, right: 32.0),
@@ -31,15 +32,15 @@ class ChangePasswordScreen extends StatelessWidget {
           children: [
             buildFormField(
                 controller: oldpasswordcontrollar,
-                label: 'old password',
-                hitt: ' Your old password'),
+                label: 'old password'.tr(context),
+                hitt: ' Your old password'.tr(context)),
             SizedBox(
               height: 15.h,
             ),
             buildFormField(
                 controller: newpasswordtrollar,
-                label: 'new password',
-                hitt: ' Your password '),
+                label: 'new password'.tr(context),
+                hitt: ' Your password '.tr(context)),
             SizedBox(
               height: 15.h,
             ),
@@ -63,8 +64,8 @@ class ChangePasswordScreen extends StatelessWidget {
               builder: (context, state) {
                 return DefaultButton(
                   text: state is ChangePasswordLoadingState
-                      ? 'Loading..'
-                      : 'Update',
+                      ? 'Loading..'.tr(context)
+                      : 'Update'.tr(context),
                   press: () {
                     if (oldpasswordcontrollar.text.trim() == currenpassword) {
                       if (newpasswordtrollar.text.length >= 6) {

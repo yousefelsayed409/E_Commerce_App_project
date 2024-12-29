@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/utils/app_styles.dart';
 import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
 import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
@@ -111,7 +112,7 @@ class _ProductDescriptionState extends State<ProductDescription> {
                 child: Row(
                   children: [
                     Text(
-                      isShowMore ? "See More Detail" : ' Show less ',
+                      isShowMore ? "See More Detail".tr(context) : ' Show less '.tr(context),
                       style: const TextStyle(
                           fontWeight: FontWeight.w600, color: kPrimaryColor),
                     ),

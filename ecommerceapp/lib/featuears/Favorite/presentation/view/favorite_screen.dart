@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/core/theme/bloc/app_theme_bloc.dart';
 import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
 import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swipe_action_cell/flutter_swipe_action_cell.dart';
 import '../../../../core/helper/Shared/Local_NetWork.dart';
 import '../../../../core/widgets/empty_screen.dart';
-import 'widget/appbar.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({super.key});
@@ -36,7 +36,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
       },
       builder: (context, state) {
         return Scaffold(
-          appBar: buildAppBarfav(context),
+          appBar: buildAppBar(context),
           body: Padding(
             padding: EdgeInsets.all(8.0.h),
             child: Column(
@@ -116,12 +116,12 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             );
                           },
                         )
-                      : const BagEmptyWidget(
-                          titleonetow: 'Your Favorite is empty',
+                      :  BagEmptyWidget(
+                          titleonetow: 'Your Favorite is empty'.tr(context),
                           imagePath: 'assets/images/shopping_cart.png',
-                          titleone: 'oops',
+                          titleone: 'oops'.tr(context),
                           SubTitle:
-                              'Look Like Your Favorite Is Empty  Add SomeThing Now',
+                              'Look Like Your Favorite Is Empty  Add SomeThing Now'.tr(context),
                         ),
                 ),
               ],
@@ -131,4 +131,17 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
       },
     );
   }
+}
+
+AppBar buildAppBar(BuildContext context) {
+  return AppBar(
+    automaticallyImplyLeading: false,
+    backgroundColor: Colors.teal,
+    elevation: 5,
+    centerTitle: true,
+    title:  Text(
+      "Your Favorite".tr(context),
+      style: TextStyle(color: Colors.white, fontWeight: FontWeight.normal),
+    ),
+  );
 }

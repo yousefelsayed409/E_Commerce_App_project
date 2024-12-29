@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/localization/localization.dart';
 import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
 import 'package:ecommerceapp/featuears/cart/manger/cart_cubit/cart_cubit.dart';
 import 'package:flutter/cupertino.dart';
@@ -170,12 +171,12 @@ class _CartScreenState extends State<CartScreen> {
                             );
                           },
                         )
-                      : const BagEmptyWidget(
-                          titleonetow: 'Your Cart is empty',
+                      :  BagEmptyWidget(
+                          titleonetow: 'Your Cart is empty'.tr(context),
                           imagePath: 'assets/images/shopping_cart.png',
-                          titleone: 'oops',
+                          titleone: 'oops'.tr(context),
                           SubTitle:
-                              'Look Like Your Cart Is Empty  Add SomeThing Now',
+                              'Look Like Your Cart Is Empty  Add SomeThing Now'.tr(context),
                         ),
                 ),
               ],
@@ -193,8 +194,8 @@ AppBar buildAppBar(BuildContext context) {
     backgroundColor: Colors.teal,
     elevation: 5,
     centerTitle: true,
-    title: const Text(
-      "Your Cart",
+    title:  Text(
+      "Your Cart".tr(context),
       style: TextStyle(color: Colors.white, fontWeight: FontWeight.normal),
     ),
   );
