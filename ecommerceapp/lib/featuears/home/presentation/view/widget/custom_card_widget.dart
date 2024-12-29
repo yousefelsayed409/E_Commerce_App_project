@@ -1,16 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
 import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
 import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/models/product_model.dart';
 import '../../../../../core/utils/app_styles.dart';
 
 // ignore: must_be_immutable
-class Customcard extends StatelessWidget {
-  Customcard({
+class CustomCard extends StatelessWidget {
+  CustomCard({
     this.ontap,
     required this.model,
     super.key,
@@ -19,7 +21,7 @@ class Customcard extends StatelessWidget {
 
   ProductModel model;
   final Function? ontap;
-  final FavoriteCubit  cubit;
+  final FavoriteCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -41,20 +43,21 @@ class Customcard extends StatelessWidget {
             ),
             elevation: 10,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 16.w),
+              padding:
+                  EdgeInsets.symmetric(horizontal: 10.h, vertical: 16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  SizedBox(
-                    height: 30.h,
-                  ),
+                  SizedBox(height: 30.h),
                   Text(model.name!,
-                      style: AppStyles.textStyle16
-                          .copyWith(overflow: TextOverflow.ellipsis)),
-                  SizedBox(
-                    height: 3.h,
-                  ),
+                  overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: CashNetwork.getCashData(key: 'theme') == 'light' ? Colors.black : Colors.white,
+                      )
+                      
+                          ),
+                  SizedBox(height: 3.h),
                   Row(
                     children: [
                       Expanded(
@@ -64,26 +67,28 @@ class Customcard extends StatelessWidget {
                               "${model.price!}\$",
                               style: TextStyle(fontSize: 14.sp),
                             ),
-                            SizedBox(
-                              width: 5.w,
-                            ),
+                            SizedBox(width: 5.w),
                           ],
                         ),
                       ),
-                      GestureDetector(
-                        child: Icon(
-                          Icons.favorite,
-                          size: 30,
-                          color: cubit.FavoriteId.contains(model.id.toString())
-                              ? Colors.red
-                              : Colors.black,
-                        ),
-                        onTap: () {
-                          // Add | remove product favorites
-                          cubit.AddOrRemoveFromFavorites(
-                              productId: model.id.toString());
-                              showsnakbarwidget(
-                        context, 'Success', true);
+                      BlocBuilder<FavoriteCubit, FavoriteState>(
+                        builder: (context, state) {
+                          return GestureDetector(
+                            child: Icon(
+                              Icons.favorite,
+                              size: 30,
+                              color: cubit.FavoriteId.contains(
+                                      model.id.toString())
+                                  ? Colors.red
+                                  : Colors.black,
+                            ),
+                            onTap: () {
+                              // Add | remove product favorites
+                              cubit.AddOrRemoveFromFavorites(
+                                  productId: model.id.toString());
+                              showsnakbarwidget(context, 'Success', true);
+                            },
+                          );
                         },
                       )
                     ],
@@ -102,9 +107,7 @@ class Customcard extends StatelessWidget {
         ),
         Positioned(
           right: 0,
-          // top: -40,
           bottom: 95.h,
-          // top: -1,
           child: CachedNetworkImage(
             height: 110.h,
             width: 110.w,
@@ -113,7 +116,6 @@ class Customcard extends StatelessWidget {
                 const Center(child: CupertinoActivityIndicator()),
             errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
-          
         )
       ],
     );

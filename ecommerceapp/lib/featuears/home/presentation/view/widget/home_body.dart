@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
+import 'package:ecommerceapp/core/theme/bloc/app_theme_bloc.dart';
 import 'package:ecommerceapp/core/widgets/custom_nav.dart';
 import 'package:ecommerceapp/featuears/categore/category_screen.dart';
 import 'package:ecommerceapp/featuears/home/presentation/manger/home_cubit/home_cubit.dart';
@@ -21,59 +22,70 @@ class HomeBody extends StatefulWidget {
   @override
   State<HomeBody> createState() => _HomeBodyState();
 }
+  bool isDarkMode = false;
+
 
 class _HomeBodyState extends State<HomeBody> {
+  @override
+  void initState() {
+    super.initState();
+    final homeCubit = context.read<HomeCubit>();
+    homeCubit.getBannersData();
+    homeCubit.getCategories();
+    // homeCubit.getProducts();
+  }
+
   final pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         final cubit = context.read<HomeCubit>();
         final favoriteCubit = context.read<FavoriteCubit>();
-    
+
         return Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.h),
-            child: ListView(
-              physics: const BouncingScrollPhysics(),
-              shrinkWrap: true,
-              children: [
-                const HomeHeader(),
-                const SizedBox(height: 15),
-                HeaderSection(
-                  textone: "Special for you",
-                  textTow: "See More",
-                ),
-                SizedBox(height: 15.h),
-                cubit.banners.isEmpty
-                    ? const Center(child: CupertinoActivityIndicator())
-                    : const CarouselWidget(),
-                SizedBox(height: 15.h),
-                HeaderSection(
-                  onTap: () {
-                    CustomNavigation.navigateTo(
-                      context,
-                      const CategoryScreen(),
-                    );
-                  },
-                  textone: "Categories",
-                  textTow: "See More",
-                ),
-                SizedBox(height: 15.h),
-                cubit.categories.isEmpty
-                    ? const Center(child: CupertinoActivityIndicator())
-                    : _buildCategoriesList(cubit),
-                SizedBox(height: 15.h),
-                HeaderSection(textone: "Products", textTow: "See More"),
-                SizedBox(height: 40.h),
-                cubit.products.isEmpty
-                    ? const Center(child: CupertinoActivityIndicator())
-                    : _buildProductsGrid(cubit, favoriteCubit),
-              ],
-            ),
-          );
+          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.h),
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            shrinkWrap: true,
+            children: [ 
+              
+              const HomeHeader(),
+              const SizedBox(height: 15),
+              HeaderSection(
+                textone: "Special for you",
+                textTow: "See More",
+              ),
+              SizedBox(height: 15.h),
+              cubit.banners.isEmpty
+                  ? const Center(child: CupertinoActivityIndicator())
+                  : const CarouselWidget(),
+              SizedBox(height: 15.h),
+              HeaderSection(
+                onTap: () {
+                  CustomNavigation.navigateTo(
+                    context,
+                    const CategoryScreen(),
+                  );
+                },
+                textone: "Categories",
+                textTow: "See More",
+              ),
+              SizedBox(height: 15.h),
+              cubit.categories.isEmpty
+                  ? const Center(child: CupertinoActivityIndicator())
+                  : _buildCategoriesList(cubit),
+              SizedBox(height: 15.h),
+              HeaderSection(textone: "Products", textTow: "See More"),
+              SizedBox(height: 40.h),
+              cubit.products.isEmpty
+                  ? const Center(child: CupertinoActivityIndicator())
+                  : _buildProductsGrid(cubit, favoriteCubit),
+            ],
+          ),
+        );
       },
     );
   }
@@ -94,7 +106,7 @@ class _HomeBodyState extends State<HomeBody> {
           ).redacted(
             context: context,
             redact: true,
-            configuration:  RedactedConfiguration(
+            configuration: RedactedConfiguration(
               animationDuration: const Duration(milliseconds: 800),
             ),
           );
@@ -126,13 +138,13 @@ class _HomeBodyState extends State<HomeBody> {
               ),
             );
           },
-          child: Customcard(model: product, cubit: favoriteCubit),
+          child: CustomCard(model: product, cubit: favoriteCubit),
         );
       },
     ).redacted(
       context: context,
       redact: true,
-      configuration:  RedactedConfiguration(
+      configuration: RedactedConfiguration(
         animationDuration: const Duration(milliseconds: 800),
       ),
     );

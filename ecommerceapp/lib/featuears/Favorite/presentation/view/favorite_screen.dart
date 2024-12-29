@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerceapp/core/theme/bloc/app_theme_bloc.dart';
 import 'package:ecommerceapp/core/widgets/snakbar_widget.dart';
 import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,13 +7,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swipe_action_cell/flutter_swipe_action_cell.dart';
+import '../../../../core/helper/Shared/Local_NetWork.dart';
 import '../../../../core/widgets/empty_screen.dart';
 import 'widget/appbar.dart';
 
-class FavoriteScreen extends StatelessWidget {
+class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({super.key});
 
   @override
+  State<FavoriteScreen> createState() => _FavoriteScreenState();
+}
+
+class _FavoriteScreenState extends State<FavoriteScreen> { 
+
+  @override
+ void initState() {
+    super.initState();
+    final favoriteCubit = context.read<FavoriteCubit>();
+    favoriteCubit.getfavorite();
+    
+  }
+  @override 
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<FavoriteCubit>(context);
     return BlocConsumer<FavoriteCubit, FavoriteState>(
@@ -25,7 +40,9 @@ class FavoriteScreen extends StatelessWidget {
           body: Padding(
             padding: EdgeInsets.all(8.0.h),
             child: Column(
-              children: [
+              children: [ 
+
+               
                 Expanded(
                   child: cubit.favorites.isNotEmpty
                       ? ListView.builder(
@@ -51,7 +68,11 @@ class FavoriteScreen extends StatelessWidget {
                               child: Container(
                                 margin: EdgeInsets.all(10.h),
                                 padding: EdgeInsets.all(10.h),
-                                color: Colors.white.withOpacity(0.5),
+                                color: 
+                                             CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.transparent
+                                : Colors.transparent,
+                                          
                                 child: Row(
                                   children: [ 
                                     CachedNetworkImage(
@@ -72,6 +93,11 @@ class FavoriteScreen extends StatelessWidget {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Text(
+                                            style: TextStyle(
+                                      color:  CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.black
+                                : Colors.white,
+                                          ),
                                             cubit.favorites[index].name!,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,

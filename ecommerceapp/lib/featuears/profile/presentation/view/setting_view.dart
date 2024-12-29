@@ -1,5 +1,8 @@
+import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/theme/bloc/app_theme_bloc.dart';
 import 'package:ecommerceapp/core/theme/cubit/them_cubit.dart';
 import 'package:ecommerceapp/core/theme/enums/them_enum.dart';
+import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,66 +16,94 @@ class _DarkAndLightViewState extends State<DarkAndLightView> {
 
   @override
   Widget build(BuildContext context) {
-    final themeCubit = BlocProvider.of<ThemCubit>(context);
+    final themeCubit = BlocProvider.of<AppThemeBloc>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'اختيار الثيم',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: isDarkMode ? Colors.white : Colors.black,
+        appBar: AppBar(
+          title: Text(
+            'اختيار الثيم',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: CashNetwork.getCashData(key: 'theme') == 'light'
+                  ? Colors.white
+                  : Colors.white,
+            ),
           ),
+          backgroundColor: CashNetwork.getCashData(key: 'theme') == 'light'
+              ? AppColors.Teal
+              : Colors.black,
+          centerTitle: true,
         ),
-        backgroundColor: isDarkMode ? Colors.black : Colors.white, 
-        centerTitle: true,
-      ),
-      body: BlocBuilder<ThemCubit, ThemState>(
-        builder: (context, state) {
-          isDarkMode = state is AppDarkThem; 
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
+              CashNetwork.getCashData(key: 'theme') == 'light'
+                  ? Icons.wb_sunny
+                  : Icons.nights_stay,
+              size: 100,
+              color: CashNetwork.getCashData(key: 'theme') == 'light'
+                  ? Colors.yellow
+                  : Colors.blue,
+            ),
+            const SizedBox(height: 20),
+            Text(
+              CashNetwork.getCashData(key: 'theme') == 'light'
+                  ? 'الوضع الفاتح'
+                  : 'الوضع الداكن',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: CashNetwork.getCashData(key: 'theme') == 'light'
+                    ? Colors.yellow
+                    : Colors.blue,
+              ),
+            ),
+            const SizedBox(height: 20),
 
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                isDarkMode ? Icons.nights_stay : Icons.wb_sunny,
-                size: 100,
+            //   ElevatedButton(
+            //   onPressed: () {
+            //    BlocProvider.of<AppThemeBloc>(context)
+            //         .add(LightThemeEvent());
+            //   },
+            //   child:  Text(' light theme' ,
+            //     style: TextStyle(color: CashNetwork.getCashData(key: 'theme') == 'light' ? Colors.black : Colors.white),
+            //   ),
+            // ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     BlocProvider.of<AppThemeBloc>(context)
+            //         .add(DarkThemeEvent());
+            //   },
+            //   child:  Text(' dark theme' ,
+            //     style: TextStyle(color: CashNetwork.getCashData(key: 'theme') == 'light' ? Colors.black : Colors.white),
+            //   ),
+            // ),
+            SwitchListTile(
+              value: isDarkMode,
+              onChanged: (value) {
+                setState(() {
+                  isDarkMode = value;
+                });
+
+                if (value) {
+                  BlocProvider.of<AppThemeBloc>(context).add(DarkThemeEvent());
+                } else {
+                  BlocProvider.of<AppThemeBloc>(context).add(LightThemeEvent());
+                }
+              },
+              title: const Text(
+                'تبديل الثيم',
+                style: TextStyle(fontSize: 18),
+              ),
+              secondary: Icon(
+                isDarkMode ? Icons.dark_mode : Icons.light_mode,
                 color: isDarkMode ? Colors.yellow : Colors.blue,
               ),
-              const SizedBox(height: 20),
-              Text(
-                isDarkMode ? 'الوضع الداكن' : 'الوضع الفاتح',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: isDarkMode ? Colors.yellow : Colors.blue,
-                ),
-              ),
-              const SizedBox(height: 20),
-              SwitchListTile(
-                value: isDarkMode,
-                onChanged: (value) {
-                  setState(() {
-                    isDarkMode = value;
-                  });
-                  themeCubit.changeTheme(
-                    value ? ThemeEnumState.Dark : ThemeEnumState.Light,
-                  );
-                },
-                title: const Text(
-                  'تبديل الثيم',
-                  style: TextStyle(fontSize: 18),
-                ),
-                secondary: Icon(
-                  isDarkMode ? Icons.dark_mode : Icons.light_mode,
-                  color: isDarkMode ? Colors.yellow : Colors.blue,
-                ),
-              ),
-            ],
-          );
-        },
-      ),
-    );
+            ),
+          ],
+        ));
   }
 }

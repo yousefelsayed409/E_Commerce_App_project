@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
+import 'package:ecommerceapp/core/theme/bloc/app_theme_bloc.dart';
 import 'package:ecommerceapp/core/utils/app_styles.dart';
 import 'package:ecommerceapp/featuears/cart/manger/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +18,7 @@ import 'widget/product_descroption.dart';
 import 'widget/product_title_with_image.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({
+   DetailsScreen({
     super.key,
     required this.ppprouduct,
   });
@@ -33,8 +35,10 @@ class DetailsScreen extends StatelessWidget {
         preferredSize: Size.fromHeight(AppBar().preferredSize.height),
         child: const CustomAppBar(),
       ),
-      body: ListView(
-        children: [
+      body: ListView( 
+
+        children: [ 
+          
           productimage(ppprouduct: ppprouduct),
           TopRoundedContainer(
             color: AppColors.white,
@@ -58,10 +62,16 @@ class DetailsScreen extends StatelessWidget {
                                 RichText(
                                   text: TextSpan(
                                     children: [
-                                      const TextSpan(
+                                       TextSpan(
                                           text: "Price \n",
-                                          style:
-                                              TextStyle(color: Colors.black)),
+                                          style: TextStyle(
+                                            color:  CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.black
+                                : Colors.black,
+                                          )
+                                         
+                                              // TextStyle(color: Colors.black)
+                                              ),
                                       TextSpan(
                                         text: "\$${ppprouduct.price}",
                                         style: AppStyles.textStyle24
@@ -113,16 +123,8 @@ class DetailsScreen extends StatelessWidget {
     );
   }
 }
- 
 
-
-
-
-
-
-
-
-  // Padding(
+// Padding(
   //               padding: const EdgeInsets.all(20),
   //               child: Row(
   //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

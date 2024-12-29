@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
 import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:ecommerceapp/core/utils/app_styles.dart';
 import 'package:ecommerceapp/featuears/profile/presentation/manger/profile_cubit/profile_cubit.dart';
@@ -28,7 +29,12 @@ class MyAccountScreen extends StatelessWidget {
             backgroundColor:  AppColors.Teal, 
             title: Text(
               "My Account",
-              style:AppStyles.textStyle20n
+              style: TextStyle(
+                fontSize: 18,
+                                            color:  CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.white
+                                : Colors.white,
+                                          ),
             ),
           ),
           body: cubit.userModel != null

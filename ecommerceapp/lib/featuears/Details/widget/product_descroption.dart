@@ -4,6 +4,7 @@ import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cub
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../core/helper/Shared/Local_NetWork.dart';
 import '../../home/data/models/product_model.dart';
 import '../../../core/utils/constants.dart';
 
@@ -36,7 +37,12 @@ class _ProductDescriptionState extends State<ProductDescription> {
               padding: EdgeInsets.symmetric(horizontal: (20.h)),
               child: Text(
                 widget.product.name.toString(),
-                style: AppStyles.textStyle20
+                style:TextStyle(
+                  fontSize: 20,
+                 color:  CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.black
+                                : Colors.black,
+                                          )
                 //  Theme.of(context).textTheme.bodyLarge,
               ),
             ),
@@ -84,6 +90,11 @@ class _ProductDescriptionState extends State<ProductDescription> {
                 widget.product.description.toString(),
                 maxLines: isShowMore ? 2 : null,
                 overflow: TextOverflow.visible,
+                style: TextStyle(
+                   color:  CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.black
+                                : Colors.black,
+                                          ),
               ),
             ),
             Padding(

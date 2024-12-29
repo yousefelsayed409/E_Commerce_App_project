@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
 import 'package:ecommerceapp/featuears/cart/widget/pay_pal_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,10 +52,20 @@ class _CheckoutCardState extends State<CheckoutCard> {
                 Text.rich(
                   TextSpan(
                     text: "Total:\n",
+                    style: TextStyle(
+                                            color:  CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.black
+                                : Colors.black,
+                                          ),
                     children: [
                       TextSpan(
                         text: '${cubit.totalPrice} \$',
-                        style: AppStyles.textStyle16,
+                        style: TextStyle(
+                          fontSize: 16,
+                                            color:  CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.black
+                                : Colors.black,
+                                          ),
                       ),
                     ],
                   ),

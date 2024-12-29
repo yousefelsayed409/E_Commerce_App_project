@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
 import 'package:ecommerceapp/core/utils/app_assets.dart';
 import 'package:ecommerceapp/core/widgets/api_constants.dart';
 import 'package:ecommerceapp/core/widgets/defult_button.dart';
@@ -47,11 +48,15 @@ class _PayMobScreenState extends State<PayMobScreen> {
             var cubit = BlocProvider.of<PaymentCubit>(context);
     
             return Scaffold(
-              backgroundColor: const Color(0xffFFFFFF),
               appBar: AppBar(
-                title: const Text(
+                title:  Text(
           "PayMob Checkout",
-          style: TextStyle(fontSize: 20),
+           style: TextStyle(
+            fontSize: 20.sp,
+                                            color:  CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.white
+                                : Colors.white,
+                                          ),
         ),
                 backgroundColor: Colors.teal,
                 centerTitle: true,
@@ -65,7 +70,8 @@ class _PayMobScreenState extends State<PayMobScreen> {
                       SizedBox(height: 18.h),
                       SizedBox(
                         height: 220.h,
-                        child: SvgPicture.asset(AppAssets.imagecompletCart),
+                        child: SvgPicture.asset(AppAssets.imagecompletCart
+                        ,),
                       ),
                       SizedBox(height: 25.h),
                       

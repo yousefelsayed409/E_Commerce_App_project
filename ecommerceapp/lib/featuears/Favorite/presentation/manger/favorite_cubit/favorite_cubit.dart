@@ -14,6 +14,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   Set<String> FavoriteId = {};
 
   Future<void> getfavorite() async {
+    emit(GetFavoritesLoadingState());
     favorites.clear();
    http.Response  response = await http.get(
         Uri.parse('https://student.valuxapps.com/api/favorites'),

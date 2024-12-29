@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
 import 'package:ecommerceapp/featuears/profile/presentation/view/widget/show_dialog_widget.dart';
 import 'package:ecommerceapp/featuears/profile/presentation/view/setting_view.dart';
 import 'package:flutter/material.dart';
@@ -58,8 +59,12 @@ class Bodyprofile extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30)),
                       backgroundColor:
-                          Theme.of(context).scaffoldBackgroundColor,
-                      content: const ShowDialogWidget(),
+                        
+                                            CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.white
+                                : Colors.white,
+                                          
+                      content:  ShowDialogWidget(),
                     );
                   },
                 );

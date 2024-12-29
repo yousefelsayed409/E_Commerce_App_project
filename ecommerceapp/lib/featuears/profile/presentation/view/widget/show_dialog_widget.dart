@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
 import 'package:ecommerceapp/core/utils/app_color.dart';
 import 'package:ecommerceapp/core/utils/app_styles.dart';
 import 'package:ecommerceapp/core/widgets/custom_nav.dart';
@@ -18,15 +19,25 @@ class ShowDialogWidget extends StatelessWidget {
       children: [
         Text(
           'Logout',
-          style: AppStyles.textStyle20,
+           style: TextStyle(
+            fontSize: 20,
+                                            color:  CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.black
+                                : Colors.black,
+                                          ),
 
         ),
         const SizedBox(
           height: 15,
         ),
-        const Text(
+         Text(
           'Are sou sure you want  to log in ?',
           textAlign: TextAlign.center,
+           style: TextStyle(
+                                            color:  CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.black
+                                : Colors.black,
+                                          ),
           
           // maxLines: 3,
         ),

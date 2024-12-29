@@ -22,6 +22,7 @@ class HomeHeader extends StatelessWidget {
           BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               return SearchField(
+                
                   onChanged: (value) {
                     cubit.filterProducts(input: value);
                   },
@@ -29,6 +30,7 @@ class HomeHeader extends StatelessWidget {
             },
           ),
           IconBtnWithCounter(
+            numOfitem: 3,
             IIcon: Icons.add_shopping_cart,
             press: () => '',
             // Navigator.pushReplacementNamed(context, AppRoute.cartScreen),

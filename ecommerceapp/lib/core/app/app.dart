@@ -1,7 +1,9 @@
+import 'package:ecommerceapp/core/theme/bloc/app_theme_bloc.dart';
 import 'package:ecommerceapp/core/theme/cubit/them_cubit.dart';
 import 'package:ecommerceapp/core/theme/enums/them_enum.dart';
 import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
 import 'package:ecommerceapp/featuears/cart/manger/cart_cubit/cart_cubit.dart';
+import 'package:ecommerceapp/featuears/cart/manger/paypal_cubit/cubit.dart';
 import 'package:ecommerceapp/featuears/home/presentation/manger/home_cubit/home_cubit.dart';
 import 'package:ecommerceapp/featuears/profile/presentation/manger/profile_cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
@@ -17,16 +19,22 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
          BlocProvider(
-          create: (context) => HomeCubit()..getProducts()..getCategories()..getBannersData(),
+          create: (context) => HomeCubit()..getProducts(),
         ),
         BlocProvider(
-          create: (context) => ProfileCubit()..getUserData(),
+          create: (context) => ProfileCubit(),
         ),
         BlocProvider(
-         create: (context) => FavoriteCubit()..getfavorite(),
+         create: (context) => FavoriteCubit(),
         ),
         BlocProvider(
-          create: (context) => CartCubit()..getCarts(),
+          create: (context) => CartCubit(),
+        ),
+         BlocProvider(
+          create: (context) => PaymentCubit()..getAuthToken(),
+        ),
+        BlocProvider(
+          create: (context) => AppThemeBloc()..add(InithalAppThemeEvent()),
         ),
       ],
       child:ScreenUtilInit(
@@ -34,25 +42,18 @@ class App extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
-          return BlocProvider(
-            create: (context) => ThemCubit()..changeTheme(ThemeEnumState.Light),
-            child: BlocBuilder<ThemCubit, ThemState>(
-              builder: (context, state) {
-                final theme = state is AppLightThem
-                    ? state.themeData
-                    : state is AppDarkThem
-                        ? state.themeData
-                        : ThemeData.light();
-      
-                return MaterialApp(
-                  theme: theme,
-                  debugShowCheckedModeBanner: false,
-                  themeMode: ThemeMode.light,
-                  initialRoute: AppRoute.splashScreen,
-                  onGenerateRoute: AppRoute.generateRoute,
-                );
-              },
-            ),
+          return BlocBuilder<AppThemeBloc, AppThemeState>(
+            builder: (context, themeState) {
+           var themee = themeState is AppChangeThemeState ?themeState.appTheme : 'light';
+                
+              return MaterialApp(
+                theme: themee == 'light' ? ThemeData.light() : ThemeData.dark(),
+                debugShowCheckedModeBanner: false,
+                themeMode: ThemeMode.light,
+                initialRoute: AppRoute.splashScreen,
+                onGenerateRoute: AppRoute.generateRoute,
+              );
+            },
           );
         },
       ),

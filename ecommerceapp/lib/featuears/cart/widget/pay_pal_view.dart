@@ -8,6 +8,7 @@ import 'package:flutter_paypal_checkout/flutter_paypal_checkout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../core/helper/Shared/Local_NetWork.dart';
 import '../../../core/widgets/defult_button.dart';
 
 class PayPalScreen extends StatefulWidget {
@@ -24,10 +25,14 @@ class _PayPalScreenState extends State<PayPalScreen> {
     final cubit = BlocProvider.of<CartCubit>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title:  Text(
           "PayPal Checkout",
-          style: TextStyle(fontSize: 20),
-        ),
+ style: TextStyle(
+  fontSize: 20.sp,
+                                            color:  CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? Colors.white
+                                : Colors.white,
+                                          ),        ),
         backgroundColor: Colors.teal,
         centerTitle: true,
       ),
@@ -43,6 +48,7 @@ class _PayPalScreenState extends State<PayPalScreen> {
                 child: SvgPicture.asset(AppAssets.imagecompletCart),
               ),
               SizedBox(height: 25.h),
+              
               OrderInfoItem(
                 title: 'Price Order',
                  value: '${cubit.totalPrice} \$',

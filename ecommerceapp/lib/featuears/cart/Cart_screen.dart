@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerceapp/core/helper/Shared/Local_NetWork.dart';
 import 'package:ecommerceapp/featuears/Favorite/presentation/manger/favorite_cubit/favorite_cubit.dart';
 import 'package:ecommerceapp/featuears/cart/manger/cart_cubit/cart_cubit.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,9 +12,22 @@ import '../../core/widgets/empty_screen.dart';
 import '../../core/widgets/snakbar_widget.dart';
 import 'widget/Cart_Chek_out.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+    @override
+
+  void initState() {
+    super.initState();
+    final cartCubit = context.read<CartCubit>();
+    cartCubit.getCarts();
+    
+  }
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<CartCubit>(context);
@@ -27,7 +41,7 @@ class CartScreen extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
-          bottomNavigationBar: CheckoutCard(),
+          bottomNavigationBar: const CheckoutCard(),
           appBar: buildAppBar(context),
           body: Padding(
             padding: EdgeInsets.all(10.h),
@@ -136,7 +150,9 @@ class CartScreen extends StatelessWidget {
                                                 },
                                                 child: Icon(
                                                   Icons.favorite,
-                                                  color: cubitfavorite.FavoriteId.contains(
+                                                  color:  
+                                        
+                                                  cubitfavorite.FavoriteId.contains(
                                                           cubit.carts[index].id
                                                               .toString())
                                                       ? Colors.red

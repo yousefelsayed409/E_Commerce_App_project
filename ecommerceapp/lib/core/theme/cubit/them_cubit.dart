@@ -17,6 +17,7 @@ class ThemCubit extends Cubit<ThemState> {
         } else {
           emit(AppDarkThem());
         }
+        
               break;
       case ThemeEnumState.Light:
         CashNetwork.insertTocash(key: 'theme', value: 'l');

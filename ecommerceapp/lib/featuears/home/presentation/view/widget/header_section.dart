@@ -1,4 +1,6 @@
+import 'package:ecommerceapp/core/utils/app_styles.dart';
 import 'package:flutter/cupertino.dart';
+import '../../../../../core/helper/Shared/Local_NetWork.dart';
 import '../../../../../core/utils/app_color.dart';
 
 class HeaderSection extends StatelessWidget {
@@ -15,20 +17,26 @@ void Function()? onTap ;
                         Text(
                           textone ,
                           
-                          style: const TextStyle(
-                              color: AppColors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.normal),
+                          style: 
+                            TextStyle(
+                           color: CashNetwork.getCashData(key: 'theme') == 'light'
+                                ? AppColors.black
+                                : AppColors.white,
+                              // color: AppColors.black,
+                              // fontSize: 20,
+                              // fontWeight: FontWeight.normal
+                              ),
                         ),
                         GestureDetector(
                           onTap: onTap ,
                           child: Text(
                             textTow ,
                                                  
-                            style: const TextStyle(
-                                color: AppColors.bluegrey,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold),
+                            style: AppStyles.textStyle10.copyWith(
+                              color: AppColors.bluegrey,
+                              fontSize: 14
+                            )
+                            
                           ),
                         ),
                       ],
